@@ -1,0 +1,317 @@
+{
+  "tests": [
+    [
+      {
+        "id": 0,
+        "name": "Distance",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.157078116,
+        "time_valgrind": 0.757724002,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 1,
+        "name": "Distance Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.195091154,
+        "time_valgrind": 0.860583497,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 2,
+        "name": "Suggestion",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.116990118,
+        "time_valgrind": 0.705344297,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 3,
+        "name": "Suggestion Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.142742973,
+        "time_valgrind": 3.167658878,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 4,
+        "name": "Common",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.226841011,
+        "time_valgrind": 0.704729066,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 5,
+        "name": "Common Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.181322258,
+        "time_valgrind": 3.197659895,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 6,
+        "name": "Popular",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.103968225,
+        "time_valgrind": 3.210155937,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 7,
+        "name": "Popular Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.129140323,
+        "time_valgrind": 3.239063272,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 8,
+        "name": "Friends Complex 1",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.167754135,
+        "time_valgrind": 3.270669593,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 9,
+        "name": "Friends Complex 2",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT)",
+        "time_normal": 0.001453587,
+        "time_valgrind": 3.284578955,
+        "timeout": 30000,
+        "test_score": 3
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "name": "Post/Repost",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.078486248,
+        "time_valgrind": 0.684975955,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 1,
+        "name": "Post/Repost Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.159775641,
+        "time_valgrind": 0.763086097,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 2,
+        "name": "LCA",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.133820582,
+        "time_valgrind": 0.459890424,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 3,
+        "name": "LCA Complex",
+        "status": "CRASHED",
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.146297519,
+        "time_valgrind": 0.484692285,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 4,
+        "name": "Like",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.197035845,
+        "time_valgrind": 0.473854859,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 5,
+        "name": "Like Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.11849342,
+        "time_valgrind": 0.479426422,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 6,
+        "name": "Ratio",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.18358276,
+        "time_valgrind": 0.454095064,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 7,
+        "name": "Ratio Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.208452573,
+        "time_valgrind": 0.512059348,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 8,
+        "name": "Posts Complex 1",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.235629478,
+        "time_valgrind": 0.497028998,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 9,
+        "name": "Posts Complex 2",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.108446469,
+        "time_valgrind": 0.60056429,
+        "timeout": 30000,
+        "test_score": 3
+      }
+    ],
+    [
+      {
+        "id": 0,
+        "name": "Feed",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.081469977,
+        "time_valgrind": 0.541432153,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 1,
+        "name": "Feed Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.094104252,
+        "time_valgrind": 0.470345194,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 2,
+        "name": "Profile",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.099726894,
+        "time_valgrind": 0.482535885,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 3,
+        "name": "Profile Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.212379949,
+        "time_valgrind": 0.467488417,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 4,
+        "name": "Reposts",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.152763286,
+        "time_valgrind": 0.508667952,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 5,
+        "name": "Reposts Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.139244707,
+        "time_valgrind": 0.49878838,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 6,
+        "name": "Clique",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.125200177,
+        "time_valgrind": 0.542838163,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 7,
+        "name": "Clique Complex",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.112310985,
+        "time_valgrind": 0.72185544,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 8,
+        "name": "Feed Complex 1",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.083970397,
+        "time_valgrind": 0.635062852,
+        "timeout": 30000,
+        "test_score": 3
+      },
+      {
+        "id": 9,
+        "name": "Feed Complex 2",
+        "status": "CRASHED",
+        "log": "11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.170297967,
+        "time_valgrind": 0.688359594,
+        "timeout": 30000,
+        "test_score": 3
+      }
+    ]
+  ],
+  "test_path": "checker/",
+  "exec_name": [
+    "friends",
+    "posts",
+    "feed"
+  ],
+  "valgrind_enabled": false
+}
