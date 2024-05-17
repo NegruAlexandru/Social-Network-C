@@ -40,6 +40,8 @@ int ** init_adj_mat(void)
 /**
  * Entrypoint of the program, compiled with different defines for each task
 */
+
+//main scris ca pula
 int main(void)
 {
 	init_users();
