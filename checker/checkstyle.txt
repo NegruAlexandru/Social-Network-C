@@ -1,0 +1,15 @@
+./friends_functions.c:79: ERROR:SPACING: space required before the open parenthesis '('
+./friends_functions.c:82: CHECK:LONG_LINE: line length of 84 exceeds 80 columns
+./friends_functions.c:120: WARNING:BRACES: braces {} are not necessary for single statement blocks
+./friends_functions.c:134: WARNING:BRACES: braces {} are not necessary for single statement blocks
+./friends_functions.c:157: WARNING:BRACES: braces {} are not necessary for single statement blocks
+./friends_functions.c:163: WARNING:BRACES: braces {} are not necessary for single statement blocks
+./friends_functions.c:188: ERROR:SPACING: space required before the open brace '{'
+./friends_functions.c:188: ERROR:SPACING: space required before the open parenthesis '('
+./friends_functions.c:189: ERROR:SPACING: space required before the open brace '{'
+./friends_functions.c:189: ERROR:SPACING: space required before the open parenthesis '('
+./friends_functions.c:190: ERROR:SPACING: space required before the open brace '{'
+./friends_functions.c:190: ERROR:SPACING: space required before the open parenthesis '('
+./friends_functions.c:196: ERROR:SPACING: space required before the open parenthesis '('
+./friends_functions.c:201: WARNING:MISSING_EOF_NEWLINE: adding a line without newline at end of file
+./social_media.c:66: ERROR:TRAILING_WHITESPACE: trailing whitespace

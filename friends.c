@@ -29,4 +29,5 @@ void handle_input_friends(char *input, int **mtx, int *no_friends)
 	else if (!strcmp(cmd, "popular"))
 		popular_friends(input, mtx, no_friends);
 	// TODO: Add function
+	free(commands);
 }

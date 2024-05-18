@@ -56,10 +56,10 @@ void distance_between_friends(char *input, int **mtx)
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
 
-	int *visited = calloc(520, sizeof(int));
-	int *distance = calloc(520, sizeof(int));
+	int *visited = calloc(518, sizeof(int));
+	int *distance = calloc(518, sizeof(int));
 
-	int *queue = calloc(520, sizeof(int));
+	int *queue = calloc(518, sizeof(int));
 	int front = 0, rear = 0;
 
 	queue[rear++] = id1;
@@ -67,7 +67,7 @@ void distance_between_friends(char *input, int **mtx)
 
 	while (front < rear) {
 		int node = queue[front++];
-		for (int i = 0; i < 520; i++) {
+		for (int i = 0; i < 518; i++) {
 			if (mtx[node][i] && !visited[i]) {
 				queue[rear++] = i;
 				visited[i] = 1;
@@ -76,7 +76,10 @@ void distance_between_friends(char *input, int **mtx)
 		}
 	}
 
-	printf("Distance between %s and %s is %d\n", user1, user2, distance[id2]);
+	if(distance[id2] == 0)
+		printf("There is no way to get from %s to %s\n", user1, user2);
+	else
+		printf("The distance between %s - %s is %d\n", user1, user2, distance[id2]);
 
 	free(visited);
 	free(queue);
@@ -87,14 +90,13 @@ void suggestions(char *input, int **mtx)
 {
 	strtok(input, " ");
 	char *user = strtok(NULL, " ");
-	user[strlen(user) - 1] = '\0';
-
+	user[strlen(user)] = '\0';
 	int id = get_user_id(user);
 
-	int *visited = calloc(520, sizeof(int));
-	int *distance = calloc(520, sizeof(int));
+	int *visited = calloc(518, sizeof(int));
+	int *distance = calloc(518, sizeof(int));
 
-	int *queue = calloc(520, sizeof(int));
+	int *queue = calloc(518, sizeof(int));
 	int front = 0, rear = 0;
 
 	queue[rear++] = id;
@@ -102,7 +104,7 @@ void suggestions(char *input, int **mtx)
 
 	while (front < rear) {
 		int node = queue[front++];
-		for (int i = 0; i < 520; i++) {
+		for (int i = 0; i < 518; i++) {
 			if (mtx[node][i] && !visited[i]) {
 				queue[rear++] = i;
 				visited[i] = 1;
@@ -114,7 +116,7 @@ void suggestions(char *input, int **mtx)
 	int suggestions[10];
 	int count = 0;
 
-	for (int i = 0; i < 520; i++) {
+	for (int i = 0; i < 518; i++) {
 		if (distance[i] == 2) {
 			suggestions[count++] = i;
 		}
@@ -148,16 +150,16 @@ void common_friends(char *input, int **mtx)
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
 
-	int common_friends[520];
+	int common_friends[518];
 	int count = 0;
 
-	for (int i = 0; i < 520; i++) {
+	for (int i = 0; i < 518; i++) {
 		if (mtx[id1][i] && mtx[id2][i]) {
 			common_friends[count++] = i;
 		}
 	}
 
-	printf("The common friends between %s and %s:\n", user1, user2);
+	printf("The common friends between %s and %s are:\n", user1, user2);
 	for (int i = 0; i < count; i++) {
 		printf("%s\n", get_user_name(common_friends[i]));
 	}
@@ -183,7 +185,7 @@ void popular_friends(char *input, int **adj_mat, int *no_friends)
 	int id = get_user_id(user);
 	int max_friends = no_friends[id];
 	int max_id = id;
-	for(int i = 0; i < 520; i++){
+	for(int i = 0; i < 518; i++){
 		if(adj_mat[id][i] == 1){
 			if(no_friends[i] > max_friends){
 				max_friends = no_friends[i];
