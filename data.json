@@ -4,20 +4,20 @@
       {
         "id": 0,
         "name": "Distance",
-        "status": "MEMLEAKS",
-        "log": "Added connection Emil - Adrian\nAdded connection Adrian - Octav\nAdded connection Octav - Rodica\nid2= 412\nThe distance between Emil - Rodica is 3\nAdded connection Emil - Daiana\nAdded connection Emil - Maria\nAdded connection Emil - Tiberiu\nid2= 279\nThe distance between Emil - Octav is 2\nid2= 494\nThere is no way to get from Emil to Frederic\nid2= 412\nThe distance between Emil - Rodica is 3\nid2= 373\nThe distance between Emil - Adrian is 1\nid2= 65535\nThere is no way to get from Emil to Tiberi\nCheck output folder for valgrind errors",
+        "status": "3",
+        "log": "Added connection Emil - Adrian\nAdded connection Adrian - Octav\nAdded connection Octav - Rodica\nThe distance between Emil - Rodica is 3\nAdded connection Emil - Daiana\nAdded connection Emil - Maria\nAdded connection Emil - Tiberiu\nThe distance between Emil - Octav is 2\nThere is no way to get from Emil to Frederic\nThe distance between Emil - Rodica is 3\nThe distance between Emil - Adrian is 1\nThe distance between Emil - Tiberiu is 1\n",
         "time_normal": 0.23559243,
-        "time_valgrind": 0.599614035,
+        "time_valgrind": 0.481788318,
         "timeout": 30000,
         "test_score": 3
       },
       {
         "id": 1,
         "name": "Distance Complex",
-        "status": "MEMLEAKS",
-        "log": "Added connection Andrada - Lica\nAdded connection Lica - Lidia\nAdded connection Lidia - Dumitra\nAdded connection Dumitra - Viorica\nAdded connection Viorica - Cerasela\nAdded connection Cerasela - Florenta\nAdded connection Florenta - Claudia\nAdded connection Claudia - Haralamb\nAdded connection Haralamb - Crina\nAdded connection Crina - Arina\nAdded connection Arina - Betina\nAdded connection Betina - Gratiela\nAdded connection Gratiela - Amza\nAdded connection Amza - Albertina\nAdded connection Albertina - Olivia\nid2= 505\nThe distance between Andrada - Olivia is 15\nAdded connection Andrada - Malina\nAdded connection Andrada - Ludovica\nAdded connection Andrada - Marina\nAdded connection Andrada - Codrut\nAdded connection Eliza - Artemisa\nAdded connection Andrada - Natalia\nAdded connection Andrada - Mirabela\nAdded connection Andrada - Anastasia\nAdded connection Andrada - Iosefina\nAdded connection Andrada - Florenta\nAdded connection Andrada - Augustina\nAdded connection Andrada - Marius\nAdded connection Andrada - Mihnea\nAdded connection Andrada - Ilarion\nAdded connection Andrada - Ilinca\nid2= 505\nThe distance between Andrada - Olivia is 10\nid2= 24\nThe distance between Andrada - Mihnea is 1\nid2= 109\nThe distance between Andrada - Haralamb is 3\nid2= 122\nThe distance between Andrada - Augustina is 1\nid2= 274\nThe distance between Andrada - Dumitra is 3\nid2= 441\nThe distance between Andrada - Lidia is 2\nid2= 278\nThe distance between Andrada - Florenta is 1\nid2= 441\nThe distance between Andrada - Lidia is 2\nid2= 122\nThe distance between Andrada - Augustina is 1\nid2= 17\nThe distance between Andrada - Ilarion is 1\nAdded connection Lucretiu - Iris\nAdded connection Iris - Lorin\nAdded connection Lorin - Aglaia\nAdded connection Aglaia - Irina\nAdded connection Irina - Vasilica\nAdded connection Vasilica - Narcis\nAdded connection Narcis - Clementina\nAdded connection Clementina - Marilena\nAdded connection Marilena - Catinca\nAdded connection Catinca - Felix\nid2= 3\nThe distance between Lucretiu - Felix is 10\nAdded connection Lucretiu - Elvira\nAdded connection Elvira - Denis\nAdded connection Denis - Miruna\nAdded connection Miruna - Felix\nid2= 3\nThe distance between Lucretiu - Felix is 4\nRemoved connection Miruna - Felix\nid2= 65535\nThere is no way to get from Lucretiu to Feli\nCheck output folder for valgrind errors",
+        "status": "3",
+        "log": "Added connection Andrada - Lica\nAdded connection Lica - Lidia\nAdded connection Lidia - Dumitra\nAdded connection Dumitra - Viorica\nAdded connection Viorica - Cerasela\nAdded connection Cerasela - Florenta\nAdded connection Florenta - Claudia\nAdded connection Claudia - Haralamb\nAdded connection Haralamb - Crina\nAdded connection Crina - Arina\nAdded connection Arina - Betina\nAdded connection Betina - Gratiela\nAdded connection Gratiela - Amza\nAdded connection Amza - Albertina\nAdded connection Albertina - Olivia\nThe distance between Andrada - Olivia is 15\nAdded connection Andrada - Malina\nAdded connection Andrada - Ludovica\nAdded connection Andrada - Marina\nAdded connection Andrada - Codrut\nAdded connection Eliza - Artemisa\nAdded connection Andrada - Natalia\nAdded connection Andrada - Mirabela\nAdded connection Andrada - Anastasia\nAdded connection Andrada - Iosefina\nAdded connection Andrada - Florenta\nAdded connection Andrada - Augustina\nAdded connection Andrada - Marius\nAdded connection Andrada - Mihnea\nAdded connection Andrada - Ilarion\nAdded connection Andrada - Ilinca\nThe distance between Andrada - Olivia is 10\nThe distance between Andrada - Mihnea is 1\nThe distance between Andrada - Haralamb is 3\nThe distance between Andrada - Augustina is 1\nThe distance between Andrada - Dumitra is 3\nThe distance between Andrada - Lidia is 2\nThe distance between Andrada - Florenta is 1\nThe distance between Andrada - Lidia is 2\nThe distance between Andrada - Augustina is 1\nThe distance between Andrada - Ilarion is 1\nAdded connection Lucretiu - Iris\nAdded connection Iris - Lorin\nAdded connection Lorin - Aglaia\nAdded connection Aglaia - Irina\nAdded connection Irina - Vasilica\nAdded connection Vasilica - Narcis\nAdded connection Narcis - Clementina\nAdded connection Clementina - Marilena\nAdded connection Marilena - Catinca\nAdded connection Catinca - Felix\nThe distance between Lucretiu - Felix is 10\nAdded connection Lucretiu - Elvira\nAdded connection Elvira - Denis\nAdded connection Denis - Miruna\nAdded connection Miruna - Felix\nThe distance between Lucretiu - Felix is 4\nRemoved connection Miruna - Felix\nThe distance between Lucretiu - Felix is 10\n",
         "time_normal": 0.27792951,
-        "time_valgrind": 0.570872993,
+        "time_valgrind": 0.423672213,
         "timeout": 30000,
         "test_score": 3
       },
@@ -27,17 +27,17 @@
         "status": "3",
         "log": "Added connection Ioana - Maricica\nAdded connection Maricica - Iosif\nAdded connection Maricica - Natalia\nAdded connection Maricica - Silvian\nAdded connection Maricica - Milena\nAdded connection Maricica - Decebal\nSuggestions for Ioana:\nIosif\nNatalia\nMilena\nSilvian\nDecebal\n",
         "time_normal": 0.001990424,
-        "time_valgrind": 0.863836569,
+        "time_valgrind": 0.413190842,
         "timeout": 30000,
         "test_score": 3
       },
       {
         "id": 3,
         "name": "Suggestion Complex",
-        "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
+        "status": "3",
+        "log": "Added connection Sinica - Romanita\nAdded connection Romanita - Fiodor\nAdded connection Romanita - Cristofor\nAdded connection Romanita - Cerasela\nAdded connection Romanita - Dimitrina\nAdded connection Romanita - Aurel\nSuggestions for Sinica:\nDimitrina\nCristofor\nFiodor\nAurel\nCerasela\nAdded connection Romanita - Banel\nAdded connection Romanita - Miron\nAdded connection Romanita - Dafina\nAdded connection Romanita - Nidia\nAdded connection Romanita - Didina\nAdded connection Miron - Nidia\nAdded connection Dimitrina - Fiodor\nAdded connection Aurel - Cristofor\nAdded connection Cristofor - Banel\nAdded connection Sinica - Miron\nAdded connection Nidia - Sinica\nAdded connection Cerasela - Dafina\nAdded connection Sinica - Cristofor\nAdded connection Dimitrina - Nidia\nSuggestions for Dimitrina:\nDafina\nDidina\nMiron\nBanel\nSinica\nCristofor\nAurel\nCerasela\nSuggestions for Cerasela:\nDimitrina\nDidina\nMiron\nBanel\nSinica\nCristofor\nFiodor\nAurel\nNidia\nSuggestions for Fiodor:\nDafina\nDidina\nMiron\nBanel\nSinica\nCristofor\nAurel\nCerasela\nNidia\nSuggestions for Dafina:\nDimitrina\nDidina\nMiron\nBanel\nSinica\nCristofor\nFiodor\nAurel\nNidia\nSuggestions for Banel:\nDafina\nDimitrina\nDidina\nMiron\nSinica\nFiodor\nAurel\nCerasela\nNidia\n",
         "time_normal": 0.184356919,
-        "time_valgrind": 4.371258174,
+        "time_valgrind": 0.523831941,
         "timeout": 30000,
         "test_score": 3
       },
@@ -45,9 +45,9 @@
         "id": 4,
         "name": "Common",
         "status": "0",
-        "log": "Added connection Andrei - Florin\nAdded connection Florin - Ilie\nAdded connection Florin - Anastasia\nAdded connection Florin - Agnos\nAdded connection Florin - Octaviana\nAdded connection Florin - Rica\nAdded connection Anastasia - Octaviana\nAdded connection Ilie - Octaviana\nAdded connection Agnos - Octaviana\nThe common friends between Florin and Octavian are:\n",
+        "log": "Added connection Andrei - Florin\nAdded connection Florin - Ilie\nAdded connection Florin - Anastasia\nAdded connection Florin - Agnos\nAdded connection Florin - Octaviana\nAdded connection Florin - Rica\nAdded connection Anastasia - Octaviana\nAdded connection Ilie - Octaviana\nAdded connection Agnos - Octaviana\nThe common friends between Florin and Octavia are:\n",
         "time_normal": 0.001730608,
-        "time_valgrind": 0.873171539,
+        "time_valgrind": 0.596148418,
         "timeout": 30000,
         "test_score": 3
       },
@@ -57,7 +57,7 @@
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
         "time_normal": 0.29269096,
-        "time_valgrind": 5.391137594,
+        "time_valgrind": 1.593250219,
         "timeout": 30000,
         "test_score": 3
       },
@@ -67,7 +67,7 @@
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
         "time_normal": 0.324881278,
-        "time_valgrind": 8.460333214,
+        "time_valgrind": 1.609300038,
         "timeout": 30000,
         "test_score": 3
       },
@@ -87,7 +87,7 @@
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
         "time_normal": 0.201118735,
-        "time_valgrind": 9.485134328000001,
+        "time_valgrind": 1.6728353980000001,
         "timeout": 30000,
         "test_score": 3
       },
