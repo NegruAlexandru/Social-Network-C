@@ -148,20 +148,57 @@ void like_post(char *input, post_array_t *posts)
 	strtok(input, " ");
 	char *user = strtok(NULL, " ");
 	char *post_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, " ");
 
 	int user_id = get_user_id(user);
 	int post_id_int = atoi(post_id);
 
-	if(!posts->array[post_id_int]->likes[user_id]) {
+	if(!repost_id) {
+		if(!posts->array[post_id_int]->likes[user_id]) {
 		posts->array[post_id_int]->likes[user_id] = calloc(1, sizeof(bool));
 		*posts->array[post_id_int]->likes[user_id] = true;
 		posts->array[post_id_int]->like_count++;
 		printf("User %s liked post \"%s\"\n", user, posts->array[post_id_int]->title);
+		} else {
+			printf("User %s unliked post \"%s\"\n", user, posts->array[post_id_int]->title);
+			free(posts->array[post_id_int]->likes[user_id]);
+			posts->array[post_id_int]->likes[user_id] = NULL;
+			posts->array[post_id_int]->like_count--;
+		}
 	} else {
-		printf("User %s unliked post \"%s\"\n", user, posts->array[post_id_int]->title);
-		free(posts->array[post_id_int]->likes[user_id]);
-		posts->array[post_id_int]->likes[user_id] = NULL;
-		posts->array[post_id_int]->like_count--;
+		int repost_id_int = atoi(repost_id);
+		g_node_t *root = posts->array[post_id_int]->events->root;
+
+		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+		int visited[4000] = {0};
+		int front = 0, rear = 0;
+		queue[rear++] = root;
+
+		while (front < rear) {
+			g_node_t *node = queue[front++];
+			visited[((post_t *)node->data)->id] = 1;
+
+			if (((post_t *)node->data)->id == repost_id_int) {
+				if(!((post_t *)node->data)->likes[user_id]) {
+					((post_t *)node->data)->likes[user_id] = calloc(1, sizeof(bool));
+					*((post_t *)node->data)->likes[user_id] = true;
+					((post_t *)node->data)->like_count++;
+					printf("User %s liked repost \"%s\"\n", user, posts->array[post_id_int]->title);
+				} else {
+					printf("User %s unliked repost \"%s\"\n", user, posts->array[post_id_int]->title);
+					free(((post_t *)node->data)->likes[user_id]);
+					((post_t *)node->data)->likes[user_id] = NULL;
+					((post_t *)node->data)->like_count--;
+				}
+				break;
+			}
+
+			for (int i = 0; i < node->n_children; i++) {
+				if (!visited[((post_t *)node->children[i]->data)->id])
+					queue[rear++] = node->children[i];
+			}
+		}
+		free(queue);
 	}
 }
 void ratio_post(char *input, post_array_t *posts)
