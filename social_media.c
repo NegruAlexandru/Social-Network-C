@@ -48,16 +48,16 @@ int main(void)
 	init_tasks();
 
 	char *input = (char *)malloc(MAX_COMMAND_LEN);
-
+	char *aux = NULL;
 	// Initialize the adjacency matrix
 	int **adj_mat = init_adj_mat();
 	int *no_friends = calloc(518, sizeof(int));
 
 	while (1) {
-		input = fgets(input, MAX_COMMAND_LEN, stdin);
+		aux = fgets(input, MAX_COMMAND_LEN, stdin);
 
 		// If fgets returns null, we reached EOF
-		if (!input)
+		if (!aux)
 			break;
 
 		#ifdef TASK_1

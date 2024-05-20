@@ -25,4 +25,5 @@ void handle_input_feed(char *input)
 	else if (!strcmp(cmd, "common-groups"))
 		(void)cmd;
 		// TODO: Add function
+	free(commands);
 }

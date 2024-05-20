@@ -75,7 +75,6 @@ void distance_between_friends(char *input, int **mtx)
 			}
 		}
 	}
-
 	if(distance[id2] == 0)
 		printf("There is no way to get from %s to %s\n", user1, user2);
 	else
