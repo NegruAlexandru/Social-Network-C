@@ -207,10 +207,42 @@ void delete_post(char *input, post_array_t *posts)
 	(void) input;
 	(void) posts;
 }
+
 void get_likes(char *input, post_array_t *posts)
 {
-	(void) input;
-	(void) posts;
+	strtok(input, " ");
+	char *post_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, " ");
+
+	int post_id_int = atoi(post_id);
+	post_id_int--;
+	if(!repost_id) {
+		printf("Post \"%s\" has %d likes\n", posts->array[post_id_int]->title, posts->array[post_id_int]->like_count);
+	} else {
+		int repost_id_int = atoi(repost_id);
+		g_node_t *root = posts->array[post_id_int]->events->root;
+
+		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+		int visited[4000] = {0};
+		int front = 0, rear = 0;
+		queue[rear++] = root;
+
+		while (front < rear) {
+			g_node_t *node = queue[front++];
+			visited[((post_t *)node->data)->id] = 1;
+
+			if (((post_t *)node->data)->id == repost_id_int) {
+				printf("Repost #%d has %d likes\n", repost_id_int, ((post_t *)node->data)->like_count);
+				break;
+			}
+
+			for (int i = 0; i < node->n_children; i++) {
+				if (!visited[((post_t *)node->children[i]->data)->id])
+					queue[rear++] = node->children[i];
+			}
+		}
+		free(queue);
+	}
 }
 
 void print_reposts(g_node_t *root, int post_id)
@@ -218,7 +250,7 @@ void print_reposts(g_node_t *root, int post_id)
 	if (!root)
 		return;
 
-	if(((post_t *)root->data)->id != post_id)
+	if(((post_t *)root->data)->id != post_id+1)
 		printf("Repost #%d by %s\n", ((post_t *)root->data)->id, get_user_name(((post_t *)root->data)->user_id)); // "Repost #%d by %s\n
 
 	for (int i = 0; i < root->n_children; i++)
