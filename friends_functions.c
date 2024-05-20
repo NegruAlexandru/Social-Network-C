@@ -139,7 +139,7 @@ void common_friends(char *input, int **mtx)
 {
 	strtok(input, " ");
 	char *user1 = strtok(NULL, " ");
-	char *user2 = strtok(NULL, "/n");
+	char *user2 = strtok(NULL, "\n");
 
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
@@ -153,9 +153,13 @@ void common_friends(char *input, int **mtx)
 		}
 	}
 
-	printf("The common friends between %s and %s are:\n", user1, user2);
-	for (int i = 0; i < count; i++) {
-		printf("%s\n", get_user_name(common_friends[i]));
+	if(count == 0)
+		printf("No common friends for %s and %s\n", user1, user2);
+	else{
+		printf("The common friends between %s and %s are:\n", user1, user2);
+		for (int i = 0; i < count; i++) {
+			printf("%s\n", get_user_name(common_friends[i]));
+		}
 	}
 }
 
