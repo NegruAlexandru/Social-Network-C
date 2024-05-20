@@ -36,10 +36,10 @@ void create_post(char *input, post_array_t *posts)
 	post->events = calloc(1, sizeof(g_tree_t));
 	post->events->root = calloc(1, sizeof(g_node_t));
 	post->events->root->data = post;
-	post->events->root->children = calloc(1, sizeof(g_node_t *));
+	post->events->root->children = calloc(100, sizeof(g_node_t *));
 	post->events->root->n_children = 0;
 
-	posts->array[posts->index] = post;
+	posts->array[posts->index - 1] = post;
 	posts->index++;
 	posts->size++;
 
@@ -75,7 +75,13 @@ void create_repost(char *input, post_array_t *posts)
 		repost_node->n_children = 0;
 
 		// Tree root
-		g_node_t *root = posts->array[post_id_int]->events->root;
+		g_node_t *root;
+		for (unsigned int i = 0; i < posts->size; i++) {
+			if (posts->array[i]->id == post_id_int) {
+				root = posts->array[i]->events->root;
+				break;
+			}
+		}
 
 		// Find repost_id node
 		g_node_t *repost_id_node = NULL;
@@ -118,64 +124,23 @@ void create_repost(char *input, post_array_t *posts)
 		node->data = post;
 		node->children = calloc(1, sizeof(g_node_t *));
 		node->n_children = 0;
-		g_node_t *root = posts->array[post_id_int]->events->root;
-		root->children[root->n_children] = node;
-		root->n_children++;
+
+		for (unsigned int i = 0; i < posts->size; i++) {
+			if (posts->array[i]->id == post_id_int) {
+				posts->array[i]->events->root->children[posts->array[i]->events->root->n_children] = node;
+				posts->array[i]->events->root->n_children++;
+				break;
+			}
+		}
 
 		posts->index++;
 	}
 	printf("Created repost #%d for %s\n", posts->index - 1, user);
 }
 
-// might be wrong
 void common_repost(char *input, post_array_t *posts)
 {
-	strtok(input, " ");
-	char *post_id1 = strtok(NULL, " ");
-	char *post_id2 = strtok(NULL, " ");
-
-	int post_id1_int = atoi(post_id1);
-	int post_id2_int = atoi(post_id2);
-
-	g_node_t *root1 = posts->array[post_id1_int]->events->root;
-	g_node_t *root2 = posts->array[post_id2_int]->events->root;
-
-	g_node_t **queue1 = calloc(4000, sizeof(g_node_t *));
-	g_node_t **queue2 = calloc(4000, sizeof(g_node_t *));
-	int visited1[4000] = {0};
-	int visited2[4000] = {0};
-	int front1 = 0, rear1 = 0, front2 = 0, rear2 = 0;
-	queue1[rear1++] = root1;
-	queue2[rear2++] = root2;
-
-	while (front1 < rear1 && front2 < rear2) {
-		g_node_t *node1 = queue1[front1++];
-		g_node_t *node2 = queue2[front2++];
-
-		visited1[((post_t *)node1->data)->id] = 1;
-		visited2[((post_t *)node2->data)->id] = 1;
-
-		if (((post_t *)node1->data)->id == post_id2_int) {
-			printf("Common repost: %d\n", ((post_t *)node1->data)->id);
-			break;
-		}
-
-		if (((post_t *)node2->data)->id == post_id1_int) {
-			printf("Common repost: %d\n", ((post_t *)node2->data)->id);
-			break;
-		}
-
-		for (int i = 0; i < node1->n_children; i++) {
-			if (!visited1[((post_t *)node1->children[i]->data)->id])
-				queue1[rear1++] = node1->children[i];
-		}
-
-		for (int i = 0; i < node2->n_children; i++) {
-			if (!visited2[((post_t *)node2->children[i]->data)->id])
-				queue2[rear2++] = node2->children[i];
-		}
-	}
-	printf("Common repost: -1");
+	// bfs
 }
 
 void like_post(char *input, post_array_t *posts)
@@ -234,6 +199,14 @@ void get_reposts(char *input, post_array_t *posts)
 	char *repost_id = strtok(NULL, " ");
 
 	int post_id_int = atoi(post_id);
+
+	for (unsigned int i = 0; i < posts->size; i++) {
+		if (posts->array[i]->id == post_id_int) {
+			post_id_int = i;
+			break;
+		}
+	}
+
 	if(!repost_id) {
 		printf("\"%s\" - Post by %s\n", posts->array[post_id_int]->title, get_user_name(posts->array[post_id_int]->user_id));
 		print_reposts(posts->array[post_id_int]->events->root, post_id_int);
