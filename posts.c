@@ -19,23 +19,18 @@ void handle_input_posts(char *input, post_t **posts, unsigned int *post_counter)
 	else if (!strcmp(cmd, "repost"))
 		create_repost(input, posts, post_counter);
 	else if (!strcmp(cmd, "common-repost"))
-		(void)cmd;
-		// common_repost(input, posts, post_counter);
+		common_repost(input, posts, post_counter);
 	else if (!strcmp(cmd, "like"))
-		(void)cmd;
-		// TODO: Add function
+		like_post(input, posts, post_counter);
 	else if (!strcmp(cmd, "ratio"))
-		(void)cmd;
-		// TODO: Add function
+		ratio_post(input, posts, post_counter);
 	else if (!strcmp(cmd, "delete"))
-		(void)cmd;
-		// TODO: Add function
+		delete_post(input, posts, post_counter);
 	else if (!strcmp(cmd, "get-likes"))
-		(void)cmd;
-		// TODO: Add function
+		get_likes(input, posts, post_counter);
 	else if (!strcmp(cmd, "get-reposts"))
-		(void)cmd;
-		// TODO: Add function
+		get_reposts(input, posts, post_counter);
+
 	free(commands);
 }
 

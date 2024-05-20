@@ -7,5 +7,11 @@
 
 void create_post(char *input, post_t **posts, unsigned int *post_counter);
 void create_repost(char *input, post_t **posts, unsigned int *post_counter);
+void common_repost(char *input, post_t **posts, unsigned int *post_counter);
+void like_post(char *input, post_t **posts, unsigned int *post_counter);
+void ratio_post(char *input, post_t **posts, unsigned int *post_counter);
+void delete_post(char *input, post_t **posts, unsigned int *post_counter);
+void get_likes(char *input, post_t **posts, unsigned int *post_counter);
+void get_reposts(char *input, post_t **posts, unsigned int *post_counter);
 
 #endif

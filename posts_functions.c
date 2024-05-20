@@ -116,3 +116,58 @@ void create_repost(char *input, post_t **posts, unsigned int *post_counter)
 	}
 	printf("Create repost#%d for %s", *post_counter - 1, user);
 }
+
+// might be wrong
+void common_repost(char *input, post_t **posts, unsigned int *post_counter)
+{
+	input[strlen(input) - 1] = '\0';
+
+	char *tmp = strtok(NULL, " ");
+	char *post_id1 = strtok(NULL, " ");
+	char *post_id2 = strtok(NULL, "\n");
+
+	int post_id1_int = atoi(post_id1);
+	int post_id2_int = atoi(post_id2);
+
+	g_node_t *root1 = posts[post_id1_int]->events->root;
+	g_node_t *root2 = posts[post_id2_int]->events->root;
+
+	g_node_t **queue1 = calloc(4000, sizeof(g_node_t *));
+	g_node_t **queue2 = calloc(4000, sizeof(g_node_t *));
+	int visited1[4000] = {0};
+	int visited2[4000] = {0};
+	int front1 = 0, rear1 = 0;
+	int front2 = 0, rear2 = 0;
+	queue1[rear1++] = root1;
+	queue2[rear2++] = root2;
+
+	int common_repost = 0;
+
+	while (front1 < rear1 && front2 < rear2) {
+		g_node_t *node1 = queue1[front1++];
+		g_node_t *node2 = queue2[front2++];
+
+		visited1[((post_t *)node1->data)->id] = 1;
+		visited2[((post_t *)node2->data)->id] = 1;
+
+		if (((post_t *)node1->data)->id == ((post_t *)node2->data)->id) {
+			common_repost = ((post_t *)node1->data)->id;
+			break;
+		}
+
+		for (int i = 0; i < node1->n_children; i++) {
+			if (!visited1[((post_t *)node1->children[i]->data)->id])
+				queue1[rear1++] = node1->children[i];
+		}
+
+		for (int i = 0; i < node2->n_children; i++) {
+			if (!visited2[((post_t *)node2->children[i]->data)->id])
+				queue2[rear2++] = node2->children[i];
+		}
+	}
+
+	if (common_repost)
+		printf("Common repost: %d\n", common_repost);
+	else
+		printf("No common repost");
+}
