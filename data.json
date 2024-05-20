@@ -6,7 +6,7 @@
         "name": "Distance",
         "status": "3",
         "log": "Added connection Emil - Adrian\nAdded connection Adrian - Octav\nAdded connection Octav - Rodica\nThe distance between Emil - Rodica is 3\nAdded connection Emil - Daiana\nAdded connection Emil - Maria\nAdded connection Emil - Tiberiu\nThe distance between Emil - Octav is 2\nThere is no way to get from Emil to Frederic\nThe distance between Emil - Rodica is 3\nThe distance between Emil - Adrian is 1\nThe distance between Emil - Tiberiu is 1\n",
-        "time_normal": 0.001371488,
+        "time_normal": 0.001062688,
         "time_valgrind": 0.662393231,
         "timeout": 30000,
         "test_score": 3
@@ -16,7 +16,7 @@
         "name": "Distance Complex",
         "status": "3",
         "log": "Added connection Andrada - Lica\nAdded connection Lica - Lidia\nAdded connection Lidia - Dumitra\nAdded connection Dumitra - Viorica\nAdded connection Viorica - Cerasela\nAdded connection Cerasela - Florenta\nAdded connection Florenta - Claudia\nAdded connection Claudia - Haralamb\nAdded connection Haralamb - Crina\nAdded connection Crina - Arina\nAdded connection Arina - Betina\nAdded connection Betina - Gratiela\nAdded connection Gratiela - Amza\nAdded connection Amza - Albertina\nAdded connection Albertina - Olivia\nThe distance between Andrada - Olivia is 15\nAdded connection Andrada - Malina\nAdded connection Andrada - Ludovica\nAdded connection Andrada - Marina\nAdded connection Andrada - Codrut\nAdded connection Eliza - Artemisa\nAdded connection Andrada - Natalia\nAdded connection Andrada - Mirabela\nAdded connection Andrada - Anastasia\nAdded connection Andrada - Iosefina\nAdded connection Andrada - Florenta\nAdded connection Andrada - Augustina\nAdded connection Andrada - Marius\nAdded connection Andrada - Mihnea\nAdded connection Andrada - Ilarion\nAdded connection Andrada - Ilinca\nThe distance between Andrada - Olivia is 10\nThe distance between Andrada - Mihnea is 1\nThe distance between Andrada - Haralamb is 3\nThe distance between Andrada - Augustina is 1\nThe distance between Andrada - Dumitra is 3\nThe distance between Andrada - Lidia is 2\nThe distance between Andrada - Florenta is 1\nThe distance between Andrada - Lidia is 2\nThe distance between Andrada - Augustina is 1\nThe distance between Andrada - Ilarion is 1\nAdded connection Lucretiu - Iris\nAdded connection Iris - Lorin\nAdded connection Lorin - Aglaia\nAdded connection Aglaia - Irina\nAdded connection Irina - Vasilica\nAdded connection Vasilica - Narcis\nAdded connection Narcis - Clementina\nAdded connection Clementina - Marilena\nAdded connection Marilena - Catinca\nAdded connection Catinca - Felix\nThe distance between Lucretiu - Felix is 10\nAdded connection Lucretiu - Elvira\nAdded connection Elvira - Denis\nAdded connection Denis - Miruna\nAdded connection Miruna - Felix\nThe distance between Lucretiu - Felix is 4\nRemoved connection Miruna - Felix\nThe distance between Lucretiu - Felix is 10\n",
-        "time_normal": 0.001924294,
+        "time_normal": 0.001369133,
         "time_valgrind": 0.714089136,
         "timeout": 30000,
         "test_score": 3
@@ -26,7 +26,7 @@
         "name": "Suggestion",
         "status": "3",
         "log": "Added connection Ioana - Maricica\nAdded connection Maricica - Iosif\nAdded connection Maricica - Natalia\nAdded connection Maricica - Silvian\nAdded connection Maricica - Milena\nAdded connection Maricica - Decebal\nSuggestions for Ioana:\nIosif\nNatalia\nMilena\nSilvian\nDecebal\n",
-        "time_normal": 0.00147205,
+        "time_normal": 0.001093127,
         "time_valgrind": 0.685784075,
         "timeout": 30000,
         "test_score": 3
@@ -36,7 +36,7 @@
         "name": "Suggestion Complex",
         "status": "3",
         "log": "Added connection Sinica - Romanita\nAdded connection Romanita - Fiodor\nAdded connection Romanita - Cristofor\nAdded connection Romanita - Cerasela\nAdded connection Romanita - Dimitrina\nAdded connection Romanita - Aurel\nSuggestions for Sinica:\nDimitrina\nCristofor\nFiodor\nAurel\nCerasela\nAdded connection Romanita - Banel\nAdded connection Romanita - Miron\nAdded connection Romanita - Dafina\nAdded connection Romanita - Nidia\nAdded connection Romanita - Didina\nAdded connection Miron - Nidia\nAdded connection Dimitrina - Fiodor\nAdded connection Aurel - Cristofor\nAdded connection Cristofor - Banel\nAdded connection Sinica - Miron\nAdded connection Nidia - Sinica\nAdded connection Cerasela - Dafina\nAdded connection Sinica - Cristofor\nAdded connection Dimitrina - Nidia\nSuggestions for Dimitrina:\nDafina\nDidina\nMiron\nBanel\nSinica\nCristofor\nAurel\nCerasela\nSuggestions for Cerasela:\nDimitrina\nDidina\nMiron\nBanel\nSinica\nCristofor\nFiodor\nAurel\nNidia\nSuggestions for Fiodor:\nDafina\nDidina\nMiron\nBanel\nSinica\nCristofor\nAurel\nCerasela\nNidia\nSuggestions for Dafina:\nDimitrina\nDidina\nMiron\nBanel\nSinica\nCristofor\nFiodor\nAurel\nNidia\nSuggestions for Banel:\nDafina\nDimitrina\nDidina\nMiron\nSinica\nFiodor\nAurel\nCerasela\nNidia\n",
-        "time_normal": 0.001442283,
+        "time_normal": 0.001557483,
         "time_valgrind": 0.695631776,
         "timeout": 30000,
         "test_score": 3
@@ -46,7 +46,7 @@
         "name": "Common",
         "status": "3",
         "log": "Added connection Andrei - Florin\nAdded connection Florin - Ilie\nAdded connection Florin - Anastasia\nAdded connection Florin - Agnos\nAdded connection Florin - Octaviana\nAdded connection Florin - Rica\nAdded connection Anastasia - Octaviana\nAdded connection Ilie - Octaviana\nAdded connection Agnos - Octaviana\nThe common friends between Florin and Octaviana are:\nAgnos\nAnastasia\nIlie\n",
-        "time_normal": 0.001429489,
+        "time_normal": 0.001250497,
         "time_valgrind": 0.668702049,
         "timeout": 30000,
         "test_score": 3
@@ -56,7 +56,7 @@
         "name": "Common Complex",
         "status": "3",
         "log": "Added connection Florian - Olivia\nAdded connection Olivia - Adelina\nAdded connection Letitia - Frederic\nAdded connection Olivia - Elena\nAdded connection Olivia - Romeo\nAdded connection Olivia - Luca\nAdded connection Letitia - Elena\nAdded connection Letitia - Florian\nNo common friends for Olivia and Florian\nAdded connection Veta - Teohari\nAdded connection Ileana - Laurentiu\nAdded connection Grigore - Teodora\nAdded connection Albert - Emanoil\nAdded connection Flavia - Olivia\nAdded connection Flavia - Teodora\nAdded connection Flavia - Romeo\nAdded connection Flavia - Elena\nAdded connection Letitia - Ileana\nAdded connection Elena - Veta\nAdded connection Luca - Flavia\nAdded connection Flavia - Emanoil\nAdded connection Emanoil - Teodora\nAdded connection Veta - Emanoil\nNo common friends for Florian and Veta\nNo common friends for Romeo and Albert\nNo common friends for Veta and Adelina\nNo common friends for Grigore and Letitia\nNo common friends for Letitia and Albert\n",
-        "time_normal": 0.001500375,
+        "time_normal": 0.001249686,
         "time_valgrind": 0.709814369,
         "timeout": 30000,
         "test_score": 3
@@ -66,7 +66,7 @@
         "name": "Popular",
         "status": "3",
         "log": "Added connection Mina - Ionut\nAdded connection Ionut - Iurie\nAdded connection Ionut - Crina\nAdded connection Ionut - Marga\nAdded connection Ionut - Nicu\nAdded connection Ionut - Cristea\nIonut has 6 friends\nAdded connection Cezar - Ica\nAdded connection Cezar - Oliviu\nAdded connection Cezar - Antonie\nAdded connection Cezar - Norica\nAdded connection Cezar - Clementina\nAdded connection Cezar - Aurelian\nAdded connection Cezar - Lucia\nAdded connection Cezar - Ivan\nCezar has 8 friends\nAdded connection Tincuta - Filofteia\nAdded connection Tincuta - Iurie\nAdded connection Tincuta - Dorian\nAdded connection Tincuta - Gregorian\nAdded connection Tincuta - Camelia\nAdded connection Tincuta - Robertina\nAdded connection Tincuta - Ludovica\nAdded connection Tincuta - Irinel\nTincuta has 8 friends\nAdded connection Ionut - Cezar\nCezar is the most popular friend of Ionut\nCezar is the most popular\nTincuta is the most popular\n",
-        "time_normal": 0.001946887,
+        "time_normal": 0.001210991,
         "time_valgrind": 0.70994057,
         "timeout": 30000,
         "test_score": 3
@@ -76,7 +76,7 @@
         "name": "Popular Complex",
         "status": "3",
         "log": "Added connection Emilia - George\nAdded connection George - Ludovic\nAdded connection George - Matei\nAdded connection George - Sever\nAdded connection George - Anamaria\nAdded connection George - Alis\nAdded connection George - Panagachie\nAdded connection George - Clarisa\nAdded connection George - Eugen\nAdded connection George - Theodor\nGeorge has 10 friends\nAdded connection Aneta - Andrei\nAdded connection Aneta - Raducu\nAdded connection Aneta - Georgiana\nAdded connection Aneta - Ducu\nAdded connection Aneta - Anghelina\nAdded connection Aneta - Lacramioara\nAdded connection Aneta - Adelaida\nAdded connection Aneta - Vasile\nAdded connection Aneta - Jenel\nAneta has 9 friends\nAdded connection Alida - Dan\nAdded connection Alida - Letitia\nAdded connection Alida - Traian\nAdded connection Alida - Stancu\nAdded connection Alida - Petronela\nAlida has 5 friends\nAdded connection George - Aneta\nGeorge is the most popular\nGeorge is the most popular friend of Aneta\nAlida is the most popular\nAdded connection Albert - Ana\nAdded connection Horatiu - Rafael\nAdded connection Tinca - Sever\nAdded connection Venera - Veta\nAdded connection Vladimir - Mariuca\nAdded connection Zaharia - Dominic\nAdded connection Zaharia - Tudor\nAdded connection Zaharia - Beatrice\nZaharia has 3 friends\nAdded connection Doriana - Daciana\nAdded connection Doriana - Codrina\nAdded connection Doriana - Gratian\nDoriana has 3 friends\nAdded connection Zaharia - Doriana\nZaharia has 4 friends\nDoriana has 4 friends\nZaharia is the most popular\nDoriana is the most popular\nGeorge is the most popular friend of Emilia\nAneta is the most popular friend of Vasile\nGeorge is the most popular friend of Aneta\nGeorge is the most popular friend of Ludovic\nAneta is the most popular friend of Vasile\n",
-        "time_normal": 0.001491487,
+        "time_normal": 0.001797491,
         "time_valgrind": 0.697946272,
         "timeout": 30000,
         "test_score": 3
@@ -86,7 +86,7 @@
         "name": "Friends Complex 1",
         "status": "3",
         "log": "Added connection Vasilica - Catrinel\nAdded connection Catrinel - David\nAdded connection David - Emanuil\nThe distance between Vasilica - Emanuil is 3\nAdded connection Vasilica - Ieremia\nAdded connection Vasilica - Blanduzia\nAdded connection Vasilica - Adela\nThe distance between Vasilica - Catrinel is 1\nThe distance between Vasilica - Catrinel is 1\nThe distance between Vasilica - Catrinel is 1\nThere is no way to get from Vasilica to Constanta\nThe distance between Vasilica - Ieremia is 1\nAdded connection Basarab - Roxana\nAdded connection Roxana - Erica\nAdded connection Roxana - Sidonia\nAdded connection Roxana - Didina\nAdded connection Roxana - Rodica\nAdded connection Roxana - Livia\nSuggestions for Basarab:\nLivia\nDidina\nRodica\nErica\nSidonia\nAdded connection Brandusa - George\nAdded connection George - Ica\nAdded connection George - Fabian\nAdded connection George - Dimitrina\nAdded connection George - Marga\nAdded connection George - Cazimir\nAdded connection Brandusa - Dimitrina\nAdded connection Dimitrina - Ica\nAdded connection Fabian - Dimitrina\nThe common friends between George and Dimitrina are:\nIca\nFabian\nBrandusa\nAdded connection Ducu - Smaranda\nAdded connection Smaranda - Haralambie\nAdded connection Smaranda - Evelina\nAdded connection Smaranda - Heracleea\nAdded connection Smaranda - Marcheta\nAdded connection Smaranda - Angela\nAdded connection Smaranda - Teohari\nAdded connection Smaranda - Vladimir\nAdded connection Smaranda - Octavia\nSmaranda has 9 friends\nAdded connection Anica - Benone\nAdded connection Anica - Dafina\nAdded connection Anica - Eftimie\nAnica has 3 friends\nAdded connection Vladimir - Xenia\nAdded connection Vladimir - Sanda\nAdded connection Vladimir - Sidonia\nAdded connection Vladimir - Marinela\nAdded connection Vladimir - Corina\nAdded connection Vladimir - Ieremia\nAdded connection Vladimir - Lucretiu\nAdded connection Vladimir - Vicentiu\nVladimir has 9 friends\nAdded connection Smaranda - Anica\nSmaranda is the most popular\nSmaranda is the most popular friend of Anica\nSmaranda is the most popular friend of Vladimir\n",
-        "time_normal": 0.001491328,
+        "time_normal": 0.001102694,
         "time_valgrind": 0.704205677,
         "timeout": 30000,
         "test_score": 3
@@ -96,7 +96,7 @@
         "name": "Friends Complex 2",
         "status": "3",
         "log": "Added connection Eftimie - Ludovica\nAdded connection Ludovica - Henrieta\nAdded connection Henrieta - Irinel\nAdded connection Irinel - Cerasela\nAdded connection Cerasela - Malina\nAdded connection Malina - Constantina\nAdded connection Constantina - Cedrin\nAdded connection Cedrin - Amelia\nAdded connection Amelia - Flavia\nAdded connection Flavia - Ionela\nAdded connection Ionela - Iosefina\nAdded connection Iosefina - Laurian\nAdded connection Laurian - Eugen\nAdded connection Eugen - Antoaneta\nAdded connection Antoaneta - Letitia\nThe distance between Eftimie - Letitia is 15\nAdded connection Eftimie - Cristian\nAdded connection Eftimie - Sandu\nAdded connection Eftimie - Olga\nAdded connection Iustin - Anemona\nAdded connection Eftimie - Sinica\nAdded connection Eftimie - Alexandru\nAdded connection Eftimie - Darius\nAdded connection Eftimie - Xenia\nAdded connection Eftimie - Henrieta\nAdded connection Eftimie - Grigore\nAdded connection Eftimie - Horea\nAdded connection Eftimie - Rafael\nAdded connection Eftimie - Corina\nAdded connection Eftimie - Voichita\nAdded connection Eftimie - Amza\nThe distance between Eftimie - Sandu is 1\nThere is no way to get from Eftimie to Anemona\nThe distance between Eftimie - Constantina is 5\nThere is no way to get from Eftimie to Beatrice\nThe distance between Eftimie - Ludovica is 1\nThe distance between Eftimie - Darius is 1\nThe distance between Eftimie - Grigore is 1\nThe distance between Eftimie - Henrieta is 1\nThe distance between Eftimie - Henrieta is 1\nThe distance between Eftimie - Amelia is 7\nAdded connection Daciana - Marcu\nAdded connection Marcu - Henrieta\nAdded connection Henrieta - Zina\nAdded connection Zina - Radu\nAdded connection Radu - Timea\nAdded connection Timea - Iacob\nAdded connection Iacob - Felix\nAdded connection Felix - Magdalena\nAdded connection Magdalena - Eusebia\nAdded connection Eusebia - Ivona\nThe distance between Daciana - Ivona is 10\nAdded connection Daciana - Leontin\nAdded connection Leontin - Ruxandra\nAdded connection Ruxandra - Caius\nAdded connection Caius - Ivona\nThe distance between Daciana - Ivona is 4\nRemoved connection Caius - Ivona\nThe distance between Daciana - Ivona is 10\nAdded connection Bartolomeu - Vasile\nAdded connection Vasile - Iosif\nAdded connection Vasile - Ioanina\nAdded connection Vasile - Dumitra\nAdded connection Aristita - Olimpia\nAdded connection Vasile - Valter\nSuggestions for Bartolomeu:\nIosif\nIoanina\nDumitra\nValter\nAdded connection Vasile - Emil\nAdded connection Niculina - Florentina\nAdded connection Vasile - Vicentiu\nAdded connection Vasile - Panagachie\nAdded connection Vasile - Nichifor\nAdded connection Aristita - Vicentiu\nAdded connection Dumitra - Niculina\nAdded connection Iosif - Vicentiu\nAdded connection Dumitra - Emil\nAdded connection Bartolomeu - Ioanina\nAdded connection Florentina - Vicentiu\nAdded connection Niculina - Ioanina\nAdded connection Niculina - Emil\nAdded connection Iosif - Bartolomeu\nAdded connection Niculina - Vicentiu\nSuggestions for Vasile:\nAristita\nFlorentina\nNiculina\nSuggestions for Valter:\nEmil\nIosif\nIoanina\nPanagachie\nBartolomeu\nDumitra\nNichifor\nVicentiu\nSuggestions for Panagachie:\nEmil\nIosif\nIoanina\nBartolomeu\nDumitra\nNichifor\nVicentiu\nValter\nSuggestions for Vicentiu:\nEmil\nOlimpia\nIoanina\nPanagachie\nBartolomeu\nDumitra\nNichifor\nValter\nSuggestions for Panagachie:\nEmil\nIosif\nIoanina\nBartolomeu\nDumitra\nNichifor\nVicentiu\nValter\nAdded connection Paulina - Tudor\nAdded connection Tudor - Haralambie\nAdded connection Elodia - Cristobal\nAdded connection Tudor - Mihnea\nAdded connection Tudor - Florian\nAdded connection Tudor - Narcis\nAdded connection Narcis - Cristobal\nAdded connection Tudor - Cristobal\nAdded connection Florian - Cristobal\nThe common friends between Tudor and Cristobal are:\nNarcis\nFlorian\nAdded connection Florin - Lucia\nAdded connection Ion - Betina\nAdded connection Zaharia - Renata\nAdded connection Eva - Mihnea\nAdded connection Ortansa - Nicusor\nAdded connection Eva - Betina\nAdded connection Tudor - Ortansa\nAdded connection Mihnea - Florin\nAdded connection Ortansa - Florian\nAdded connection Zaharia - Betina\nAdded connection Elodia - Ortansa\nAdded connection Tudor - Lucia\nAdded connection Eva - Narcis\nAdded connection Ion - Elodia\nAdded connection Florian - Renata\nNo common friends for Florin and Nicusor\nThe common friends between Mihnea and Ortansa are:\nTudor\nThe common friends between Florian and Narcis are:\nTudor\nCristobal\nNo common friends for Zaharia and Elodia\nNo common friends for Lucia and Florin\nAdded connection Sava - Panagachie\nAdded connection Panagachie - Basarab\nAdded connection Panagachie - Ruxandra\nAdded connection Panagachie - Vasilica\nAdded connection Panagachie - Loredana\nAdded connection Panagachie - Relu\nAdded connection Panagachie - Mioara\nAdded connection Panagachie - Dumitru\nAdded connection Panagachie - Adam\nPanagachie has 10 friends\nAdded connection Constantina - Zoe\nAdded connection Constantina - Saveta\nAdded connection Constantina - Aura\nAdded connection Constantina - Emanuil\nAdded connection Constantina - Paul\nAdded connection Constantina - Roxana\nConstantina has 8 friends\nAdded connection Zoe - Cristina\nAdded connection Zoe - Dorin\nAdded connection Zoe - Aura\nAdded connection Zoe - Petronela\nAdded connection Zoe - Mircea\nAdded connection Zoe - Anamaria\nAdded connection Zoe - Agripina\nAdded connection Iolanda - Rozalia\nAdded connection Zoe - Tudor\nZoe has 9 friends\nAdded connection Panagachie - Constantina\nPanagachie is the most popular\nPanagachie is the most popular friend of Constantina\nZoe is the most popular\nAdded connection Alberta - Marius\nAdded connection Dida - Sidonia\nAdded connection Flavia - Zamfira\nAdded connection Julia - Lica\nAdded connection Sebastian - Gica\nAdded connection Stancu - Olivia\nAdded connection Stancu - Nicodim\nAdded connection Stancu - Felicia\nStancu has 3 friends\nAdded connection Blanduzia - Lorin\nAdded connection Blanduzia - Ducu\nAdded connection Blanduzia - Angel\nBlanduzia has 3 friends\nAdded connection Stancu - Blanduzia\nStancu has 4 friends\nBlanduzia has 4 friends\nStancu is the most popular\nBlanduzia is the most popular\nBlanduzia is the most popular friend of Lorin\nConstantina is the most popular friend of Paul\nStancu is the most popular friend of Felicia\nPanagachie is the most popular friend of Adam\nZoe is the most popular friend of Dorin\n",
-        "time_normal": 0.002260355,
+        "time_normal": 0.002344625,
         "time_valgrind": 0.808321577,
         "timeout": 30000,
         "test_score": 3
@@ -106,9 +106,9 @@
       {
         "id": 0,
         "name": "Post/Repost",
-        "status": "ERROR",
-        "log": "No such file or directory (os error 2)",
-        "time_normal": 0.09135306,
+        "status": "3",
+        "log": "Created \"@realDonaldTrump Did you really start mewing to skibidi ohio? Are you a sigma or did you get fandum taxxed\" for Emil\nCreated \"Pamantul este plat!\" for Octav\nCreated \"STEAUA27\" for Daiana\nCreated \"Ai incercat cu otel galvanizat?\" for Tiberiu\nCreated \"Sper sa iau licenta anul asta\" for Caius\nCreated repost #6 for Voicu\nCreated repost #7 for Lica\nCreated repost #8 for Viorica\nCreated repost #9 for Claudia\nCreated repost #10 for Silvana\nCreated repost #11 for Amza\nCreated repost #12 for Ludovica\nCreated repost #13 for Codrut\nCreated repost #14 for Artemisa\nCreated repost #15 for Mirabela\n\"@realDonaldTrump Did you really start mewing to skibidi ohio? Are you a sigma or did you get fandum taxxed\" - Post by Emil\nRepost #9 by Claudia\nRepost #13 by Codrut\n\"Pamantul este plat!\" - Post by Octav\nRepost #10 by Silvana\nRepost #11 by Amza\nRepost #15 by Mirabela\n\"STEAUA27\" - Post by Daiana\nRepost #8 by Viorica\n\"Ai incercat cu otel galvanizat?\" - Post by Tiberiu\nRepost #7 by Lica\n\"Sper sa iau licenta anul asta\" - Post by Caius\nRepost #6 by Voicu\nRepost #12 by Ludovica\nRepost #14 by Artemisa\n",
+        "time_normal": 0.000491368,
         "time_valgrind": 1.535422371,
         "timeout": 30000,
         "test_score": 3
@@ -116,9 +116,9 @@
       {
         "id": 1,
         "name": "Post/Repost Complex",
-        "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.157202901,
+        "status": "3",
+        "log": "Created \"Ai incercat cu otel galvanizat?\" for Ilinca\nCreated \"O luam de la cap din nou Stii ca sunt dilau-lau-lau Am la mine banii pe show Vagabontii-n dreapta, go go go O sa fie lata Suntem in brigada Atmosfera e ciudata Cand bei apa plata\" for Veniamin\nCreated \"onika when the burgers are in plate\" for Daniel\nCreated \"I'm built different. Incorrectly.\" for Lucretiu\nCreated \"marriage is just preordering a milf\" for Lorin\nCreated \"Exploding kittens\" for Venera\nCreated \"Ce e aia Galgoaie?\" for Narcis\nCreated \"onika when the burgers are in plate\" for Ina\nCreated \"*touches circumcision scar* who did this to you\" for Felix\nCreated \"@realDonaldTrump Did you really start mewing to skibidi ohio? Are you a sigma or did you get fandum taxxed\" for Letitia\nCreated repost #11 for Maricica\nCreated repost #12 for Natalia\nCreated repost #13 for Cristobal\nCreated repost #14 for Fiodor\nCreated repost #15 for Cerasela\nCreated repost #16 for Banel\nCreated repost #17 for Nidia\nCreated repost #18 for Nicoara\nCreated repost #19 for Floarea\nCreated repost #20 for Eftimie\nCreated repost #21 for Pamfil\nCreated repost #22 for Marioara\nCreated repost #23 for Sava\nCreated repost #24 for Luca\nCreated repost #25 for Ilie\nCreated repost #26 for Octaviana\nCreated repost #27 for Romanita\nCreated repost #28 for Adelina\nCreated repost #29 for Geanina\nCreated repost #30 for Luca\nRepost #21 by Pamfil\nRepost #15 by Cerasela\nRepost #20 by Eftimie\nRepost #30 by Luca\n\"O luam de la cap din nou Stii ca sunt dilau-lau-lau Am la mine banii pe show Vagabontii-n dreapta, go go go O sa fie lata Suntem in brigada Atmosfera e ciudata Cand bei apa plata\" - Post by Veniamin\nRepost #17 by Nidia\nRepost #24 by Luca\n\"I'm built different. Incorrectly.\" - Post by Lucretiu\nRepost #13 by Cristobal\nRepost #14 by Fiodor\nRepost #19 by Floarea\nRepost #22 by Marioara\n\"Ce e aia Galgoaie?\" - Post by Narcis\n\"onika when the burgers are in plate\" - Post by Ina\nRepost #12 by Natalia\nRepost #18 by Nicoara\nRepost #27 by Romanita\n\"*touches circumcision scar* who did this to you\" - Post by Felix\nRepost #20 by Eftimie\nRepost #26 by Octaviana\nRepost #29 by Geanina\n",
+        "time_normal": 0.000928543,
         "time_valgrind": 3.16501074,
         "timeout": 30000,
         "test_score": 3
@@ -127,8 +127,8 @@
         "id": 2,
         "name": "LCA",
         "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.001439828,
+        "log": "6 (SIGABRT) (core dumped)",
+        "time_normal": 0.138430545,
         "time_valgrind": 6.20911695,
         "timeout": 30000,
         "test_score": 3
@@ -138,7 +138,7 @@
         "name": "LCA Complex",
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.000929417,
+        "time_normal": 0.12512176,
         "time_valgrind": 8.250492579,
         "timeout": 30000,
         "test_score": 3
@@ -146,9 +146,9 @@
       {
         "id": 4,
         "name": "Like",
-        "status": "MEMLEAKS",
-        "log": "title: https://www.youtube.com/watch?v=wtQGvuuzst0\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Beatricetitle: The horros persist but so do I\nCreated \"The horros persist but so do I\" for Veneratitle: Sigma hack #28 If your tummy starts hurting while you're on a date... Call your m\nCreated \"Sigma hack #28 If your tummy starts hurting while you're on a date... Call your m\" for Cristobaltitle: Congratulations to the Astronauts that left Earth today. Good choice\nCreated \"Congratulations to the Astronauts that left Earth today. Good choice\" for Dacianatitle: she=onika ate=burgers\nCreated \"she=onika ate=burgers\" for HenrietaCreate repost#6 for TimeaCreate repost#7 for IacobCreate repost#8 for MagdalenaCreate repost#9 for IvonaCreate repost#10 for Ruxandra\nCheck output folder for valgrind errors",
-        "time_normal": 0.001485947,
+        "status": "0",
+        "log": "Created \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Beatrice\nCreated \"The horros persist but so do I\" for Venera\nCreated \"Sigma hack #28 If your tummy starts hurting while you're on a date... Call your mom. She can pick you up. No need to cry.\" for Cristobal\nCreated \"Congratulations to the Astronauts that left Earth today. Good choice\" for Daciana\nCreated \"she=onika ate=burgers\" for Henrieta\nCreated repost #6 for Timea\nCreated repost #7 for Iacob\nCreated repost #8 for Magdalena\nCreated repost #9 for Ivona\nCreated repost #10 for Ruxandra\n",
+        "time_normal": 0.000677865,
         "time_valgrind": 0.641631033,
         "timeout": 30000,
         "test_score": 3
@@ -156,9 +156,9 @@
       {
         "id": 5,
         "name": "Like Complex",
-        "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.000977209,
+        "status": "0",
+        "log": "Created \"Mergem inainte ca inainte era mai bine\" for Paulina\nCreated \"stream girls night by loossemble\" for Tudor\nCreated \"Going to Apollo who s down?\" for Haralambie\nCreated \"This bard, sir kendrick of lamar you speak of... he hath slain how many drakes, you say? with but the power of song?\" for Iris\nCreated \"Sometimes the silliest things happen and silly little tears begin to fall from my silly little eyes\" for Iridenta\nCreated \"This bard, sir kendrick of lamar you speak of... he hath slain how many drakes, you say? with but the power of song?\" for Antonie\nCreated \"Luke, eu am plecat dupa lapte acum 20 de ani\" for Zoe\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Banel\nCreated \"onika when the burgers are in plate\" for Lucia\nCreated \"Despite the constant negative press covfefe\" for Betina\nCreated repost #11 for Renata\nCreated repost #12 for Mihnea\nCreated repost #13 for Eliza\nCreated repost #14 for Gabriel\nCreated repost #15 for Ghita\nCreated repost #16 for Anastasia\nCreated repost #17 for Sever\nCreated repost #18 for Gabriel\nCreated repost #19 for Teohari\nCreated repost #20 for Eduard\n",
+        "time_normal": 0.000797122,
         "time_valgrind": 7.228827113,
         "timeout": 30000,
         "test_score": 3
@@ -166,9 +166,9 @@
       {
         "id": 6,
         "name": "Ratio",
-        "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.00102441,
+        "status": "0",
+        "log": "Created \"she=onika ate=burgers\" for Mihail\nCreated \"Trebuia sa cumpar Bitcoin acum 10 ani in loc sa ma loc de-a prinselea.\" for Miruna\nCreated \"Cine a pus wc-ul in baie a fost un geniu\" for Panait\nCreated \"Sigma hack #28 If your tummy starts hurting while you're on a date... Call your mom. She can pick you up. No need to cry.\" for Stana\nCreated \"down on the west coast they got a saying if youre not drinking then youre not playing\" for Antonie\nCreated repost #6 for Barbu\nCreated repost #7 for Ivan\nCreated repost #8 for Antonela\nCreated repost #9 for Agnos\nCreated repost #10 for Andra\n",
+        "time_normal": 0.000836738,
         "time_valgrind": 9.230085042,
         "timeout": 30000,
         "test_score": 3
@@ -176,9 +176,9 @@
       {
         "id": 7,
         "name": "Ratio Complex",
-        "status": "MEMLEAKS",
-        "log": "title: erm what the sigma\nCreated \"erm what the sigma\" for Paveltitle: https://www.youtube.com/watch?v=wtQGvuuzst0\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Milenatitle: https://www.youtube.com/watch?v=wtQGvuuzst0\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Angheltitle: La placinte la razboi, inainte inapoi\nCreated \"La placinte la razboi, inainte inapoi\" for Beatricetitle: N ai restanta,n ai prestanta verik!\nCreated \"N ai restanta,n ai prestanta verik!\" for Paveltitle: In o lume plina de mizerie, fii tu mop!\nCreated \"In o lume plina de mizerie, fii tu mop!\" for Visariontitle: You’re not like us\nCreated \"You’re not like us\" for Augustinatitle: fantastic!\nCreated \"fantastic!\" for Gicatitle: Adrian Elicopter vs Selly. Who wins?\nCreated \"Adrian Elicopter vs Selly. Who wins?\" for Lilititle: Segmentation fault(core dumped)\nCreated \"Segmentation fault(core dumped)\" for MarinelaCreate repost#11 for LeanaCreate repost#12 for MagdalenaCreate repost#13 for FlorinCreate repost#14 for LarisaCreate repost#15 for FilofteiaCreate repost#16 for MalinaCreate repost#17 for EricaCreate repost#18 for LudovicCreate repost#19 for SidoniaCreate repost#20 for Viorela\nCheck output folder for valgrind errors",
-        "time_normal": 0.001202602,
+        "status": "0",
+        "log": "Created \"erm what the sigma\" for Pavel\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Milena\nCreated \"https://www.youtube.com/watch?v=wtQGvuuzst0\" for Anghel\nCreated \"La placinte la razboi, inainte inapoi\" for Beatrice\nCreated \"N ai restanta,n ai prestanta verik!\" for Pavel\nCreated \"In o lume plina de mizerie, fii tu mop!\" for Visarion\nCreated \"You’re not like us\" for Augustina\nCreated \"fantastic!\" for Gica\nCreated \"Adrian Elicopter vs Selly. Who wins?\" for Lili\nCreated \"Segmentation fault(core dumped)\" for Marinela\nCreated repost #11 for Leana\nCreated repost #12 for Magdalena\nCreated repost #13 for Florin\nCreated repost #14 for Larisa\nCreated repost #15 for Filofteia\nCreated repost #16 for Malina\nCreated repost #17 for Erica\nCreated repost #18 for Ludovic\nCreated repost #19 for Sidonia\nCreated repost #20 for Viorela\n",
+        "time_normal": 0.000775992,
         "time_valgrind": 0.646060856,
         "timeout": 30000,
         "test_score": 3
@@ -188,7 +188,7 @@
         "name": "Posts Complex 1",
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.000809877,
+        "time_normal": 0.14925081,
         "time_valgrind": 4.111846937,
         "timeout": 30000,
         "test_score": 3
@@ -197,8 +197,8 @@
         "id": 9,
         "name": "Posts Complex 2",
         "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.000953714,
+        "log": "Created \"Sper ca pot termina facultatea\" for Fiodor\nCreated \"Why does the Java developer wear glasses? He couldn’t C# :p\" for Basarab\nCreated \"Sper ca pot termina facultatea\" for Roxana\nCreated \"Away from 2 3 4 wonderful wonderful wonderful\" for Sidonia\nCreated \"Mergem inainte ca inainte era mai bine\" for Rodica\nCreated \"Exploding kittens\" for Livia\nCreated \"erm what the sigma\" for George\nCreated \"marriage is just preordering a milf\" for Fabian\nCreated \"whats your eta?\" for Marga\nCreated \"Stati ca Nokia inca face telefoane? Cu butoane? Sunt vreo 100-200 de lei. Am luat trei.\" for Teodosia\nCreated repost #11 for Constantin\nCreated repost #12 for Smaranda\nCreated repost #13 for Haralambie\nCreated repost #14 for Marcheta\nCreated repost #15 for Octavia\nCreated repost #16 for Benone\nCreated repost #17 for Tudor\nCreated repost #18 for Sanda\nCreated repost #19 for Marinela\nCreated repost #20 for Lucretiu\nCreated \"Mergem inainte ca inainte era mai bine\" for Miron\nCreated \"Cine a fost primul? Gaina sau oul?\" for Ada\nCreated \"Am luat restanta la Ghiu, sigur si voi\" for Ieremia\nCreated \"Sometimes the silliest things happen and silly little tears begin to fall from my silly little eyes\" for Tudor\nCreated \"This bard, sir kendrick of lamar you speak of... he hath slain how many drakes, you say? with but the power of song?\" for Pamfil\nCreated \"Cine sapa groapa altuia departe ajunge\" for Agripina\nCreated \"FCSB e Steaua Travis Scott la hamsii in Costinesti!\" for Marta\nCreated \"Cine a fost primul? Gaina sau oul?\" for Teea\nCreated \"you thought i was feelin u?\" for Nelu\nCreated \"SIUUUUUUUUUUUU\" for Arina\nCreated repost #31 for Bianca\nCreated repost #32 for Vasile\nCreated repost #33 for Letitia\nCreated repost #34 for Sanda\nCreated repost #35 for Dan\nCreated repost #36 for Georgel\nCreated repost #37 for Rafila\nCreated repost #38 for Tiberiu\nCreated repost #39 for Giorgiana\nCreated repost #40 for Tinca\nCreated repost #41 for Ludovica\nCreated repost #42 for Aristita\nCreated repost #43 for Alex\nCreated repost #44 for Mihail\nCreated repost #45 for Panait\nCreated repost #46 for Antonie\nCreated repost #47 for Barbu\nCreated repost #48 for Ivan\nCreated repost #49 for Antonela\nCreated repost #50 for Daria\nRepost #41 by Ludovica\n\"Why does the Java developer wear glasses? He couldn’t C# :p\" - Post by Basarab\nRepost #31 by Bianca\n\"Away from 2 3 4 wonderful wonderful wonderful\" - Post by Sidonia\nRepost #19 by Marinela\nRepost #33 by Letitia\nRepost #39 by Giorgiana\nRepost #47 by Barbu\n\"Mergem inainte ca inainte era mai bine\" - Post by Rodica\n\"This bard, sir kendrick of lamar you speak of... he hath slain how many drakes, you say? with but the power of song?\" - Post by Pamfil\nRepost #38 by Tiberiu\n\"Cine a fost primul? Gaina sau oul?\" - Post by Teea\nRepost #42 by Aristita\nRepost #45 by Panait\nCreated \"La placinte la razboi, inainte inapoi\" for Ilinca\nCreated \"Congratulations to the Astronauts that left Earth today. Good choice\" for Ina\nCreated \"Cumpar tema 3 la SDA\" for Petrisor\nCreated \"erm what the sigma\" for Mariuca\nCreated \"Mor de foame, donati?\" for Leontin\nCreated \"Batman can’t even compare to Ryan Gosling\" for Ieremia\nCreated \"Cumpar tema 3 la SDA\" for Vlaicu\nCreated \"Ce faci? Bine...ascultam ploaia. Nu o auzi?\" for Cedrin\nCreated \"Sper ca pot termina facultatea\" for Iacob\nCreated \"Mor de foame, donati?\" for Despina\nCreated repost #61 for Lorelei\nCreated repost #62 for Minodora\nCreated repost #63 for Haralambie\nCreated repost #64 for Cezar\nCreated repost #65 for Emil\nCreated repost #66 for Tincuta\nCreated repost #67 for Tudorita\nCreated repost #68 for Angel\nCreated repost #69 for Vincentiu\nCreated repost #70 for Anghel\nCreated repost #71 for Georgel\nCreated repost #72 for Tiberiu\nCreated repost #73 for Aura\nCreated repost #74 for Dana\nCreated repost #75 for Veta\nCreated repost #76 for Mirabela\nCreated repost #77 for Ortansa\nCreated repost #78 for Sabin\nCreated repost #79 for Iurie\nCreated repost #80 for Carmen\nCreated repost #81 for Nicusor\nCreated repost #82 for Iris\nCreated repost #83 for Zaraza\nCreated repost #84 for Theodor\nCreated repost #85\n11 (SIGSEGV) (core dumped)",
+        "time_normal": 0.11276989,
         "time_valgrind": 5.127574682,
         "timeout": 30000,
         "test_score": 3

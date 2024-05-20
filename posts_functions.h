@@ -12,6 +12,7 @@ void like_post(char *input, post_array_t *posts);
 void ratio_post(char *input, post_array_t *posts);
 void delete_post(char *input, post_array_t *posts);
 void get_likes(char *input, post_array_t *posts);
+void print_reposts(g_node_t *root, int post_id);
 void get_reposts(char *input, post_array_t *posts);
 
 #endif

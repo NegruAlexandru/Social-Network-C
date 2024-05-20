@@ -39,7 +39,7 @@ void create_post(char *input, post_array_t *posts)
 	post->events->root->children = calloc(1, sizeof(g_node_t *));
 	post->events->root->n_children = 0;
 
-	posts->array[posts->size] = post;
+	posts->array[posts->index] = post;
 	posts->index++;
 	posts->size++;
 
@@ -118,14 +118,13 @@ void create_repost(char *input, post_array_t *posts)
 		node->data = post;
 		node->children = calloc(1, sizeof(g_node_t *));
 		node->n_children = 0;
-
 		g_node_t *root = posts->array[post_id_int]->events->root;
 		root->children[root->n_children] = node;
 		root->n_children++;
 
 		posts->index++;
 	}
-	printf("Create repost#%d for %s", posts->index - 1, user);
+	printf("Created repost #%d for %s\n", posts->index - 1, user);
 }
 
 // might be wrong
@@ -199,8 +198,52 @@ void get_likes(char *input, post_array_t *posts)
 	(void) input;
 	(void) posts;
 }
+
+void print_reposts(g_node_t *root, int post_id)
+{
+	if (!root)
+		return;
+
+	if(((post_t *)root->data)->id != post_id)
+		printf("Repost #%d by %s\n", ((post_t *)root->data)->id, get_user_name(((post_t *)root->data)->user_id)); // "Repost #%d by %s\n
+
+	for (int i = 0; i < root->n_children; i++)
+		print_reposts(root->children[i], post_id);
+}
+
 void get_reposts(char *input, post_array_t *posts)
 {
-	(void) input;
-	(void) posts;
+	strtok(input, " ");
+	char *post_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, " ");
+
+	int post_id_int = atoi(post_id);
+	if(!repost_id) {
+		printf("\"%s\" - Post by %s\n", posts->array[post_id_int]->title, get_user_name(posts->array[post_id_int]->user_id));
+		print_reposts(posts->array[post_id_int]->events->root, post_id_int);
+	} else {
+		//find the node with the repost_id and then use print_reposts
+		int repost_id_int = atoi(repost_id);
+		g_node_t *root = posts->array[post_id_int]->events->root;
+
+		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+		int visited[4000] = {0};
+		int front = 0, rear = 0;
+		queue[rear++] = root;
+
+		while (front < rear) {
+			g_node_t *node = queue[front++];
+			visited[((post_t *)node->data)->id] = 1;
+
+			if (((post_t *)node->data)->id == repost_id_int) {
+				print_reposts(node, post_id_int);
+				break;
+			}
+
+			for (int i = 0; i < node->n_children; i++) {
+				if (!visited[((post_t *)node->children[i]->data)->id])
+					queue[rear++] = node->children[i];
+			}
+		}
+	}
 }
