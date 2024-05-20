@@ -33,6 +33,7 @@ struct post_t {
  *
  * Please add any necessary parameters to the functions
 */
-void handle_input_posts(char *input, post_t **posts, unsigned int *post_counter);
+void handle_input_posts(char *input, post_t **posts,
+						unsigned int *post_counter);
 
 #endif // POSTS_H

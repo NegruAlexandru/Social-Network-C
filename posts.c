@@ -20,7 +20,7 @@ void handle_input_posts(char *input, post_t **posts, unsigned int *post_counter)
 		create_repost(input, posts, post_counter);
 	else if (!strcmp(cmd, "common-repost"))
 		(void)cmd;
-		common_repost(input, posts, post_counter);
+		// common_repost(input, posts, post_counter);
 	else if (!strcmp(cmd, "like"))
 		(void)cmd;
 		// TODO: Add function
@@ -34,9 +34,6 @@ void handle_input_posts(char *input, post_t **posts, unsigned int *post_counter)
 		(void)cmd;
 		// TODO: Add function
 	else if (!strcmp(cmd, "get-reposts"))
-		(void)cmd;
-		// TODO: Add function
-	else if (!strcmp(cmd, "get-likes"))
 		(void)cmd;
 		// TODO: Add function
 	free(commands);

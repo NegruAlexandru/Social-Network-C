@@ -5,8 +5,8 @@
 #include "friends_functions.h"
 #include "users.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 void add_friend(char *input, int **mtx, int *no_friends)
 
@@ -72,10 +72,11 @@ void distance_between_friends(char *input, int **mtx)
 			}
 		}
 	}
-	if(distance[id2] == 0)
+	if (distance[id2] == 0)
 		printf("There is no way to get from %s to %s\n", user1, user2);
 	else
-		printf("The distance between %s - %s is %d\n", user1, user2, distance[id2]);
+		printf("The distance between %s - %s is %d\n", user1,
+			   user2, distance[id2]);
 
 	free(visited);
 	free(queue);
@@ -112,9 +113,8 @@ void suggestions(char *input, int **mtx)
 	int count = 0;
 
 	for (int i = 0; i < 518; i++) {
-		if (distance[i] == 2) {
+		if (distance[i] == 2)
 			suggestions[count++] = i;
-		}
 	}
 	for (int i = 0; i < count - 1; i++) {
 		for (int j = 0; j < count - i - 1; j++)
@@ -126,9 +126,8 @@ void suggestions(char *input, int **mtx)
 	}
 
 	printf("Suggestions for %s:\n", user);
-	for (int i = 0; i < count; i++) {
+	for (int i = 0; i < count; i++)
 		printf("%s\n", get_user_name(suggestions[i]));
-	}
 
 	free(visited);
 	free(queue);
@@ -148,18 +147,16 @@ void common_friends(char *input, int **mtx)
 	int count = 0;
 
 	for (int i = 0; i < 518; i++) {
-		if (mtx[id1][i] && mtx[id2][i]) {
+		if (mtx[id1][i] && mtx[id2][i])
 			common_friends[count++] = i;
-		}
 	}
 
-	if(count == 0)
+	if (count == 0) {
 		printf("No common friends for %s and %s\n", user1, user2);
-	else{
+	} else {
 		printf("The common friends between %s and %s are:\n", user1, user2);
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < count; i++)
 			printf("%s\n", get_user_name(common_friends[i]));
-		}
 	}
 }
 
@@ -181,15 +178,15 @@ void popular_friends(char *input, int **adj_mat, int *no_friends)
 	int id = get_user_id(user);
 	int max_friends = no_friends[id];
 	int max_id = id;
-	for(int i = 0; i < 518; i++){
-		if(adj_mat[id][i] == 1){
-			if(no_friends[i] > max_friends){
+	for (int i = 0; i < 518; i++) {
+		if (adj_mat[id][i] == 1) {
+			if (no_friends[i] > max_friends) {
 				max_friends = no_friends[i];
 				max_id = i;
 			}
 		}
 	}
-	if(max_friends == no_friends[id])
+	if (max_friends == no_friends[id])
 		printf("%s is the most popular\n", user);
 	else
 		printf("%s is the most popular friend of %s\n",

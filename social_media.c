@@ -49,13 +49,18 @@ int main(void)
 
 	char *input = (char *)malloc(MAX_COMMAND_LEN);
 	char *aux = NULL;
+
 	// Initialize the adjacency matrix
+	#if defined(TASK_1) || defined(TASK_3)
 	int **adj_mat = init_adj_mat();
 	int *no_friends = calloc(518, sizeof(int));
+	#endif
 
 	// Initialize the post counter and array
+	#if defined(TASK_2) || defined(TASK_3)
 	unsigned int post_counter = 1;
 	post_t **posts = calloc(100, sizeof(post_t *));
+	#endif
 
 	while (1) {
 		aux = fgets(input, MAX_COMMAND_LEN, stdin);
@@ -67,7 +72,7 @@ int main(void)
 		#ifdef TASK_1
 		handle_input_friends(input, adj_mat, no_friends);
 		#endif
-		
+
 		#ifdef TASK_2
 		handle_input_posts(input, posts, &post_counter);
 		#endif
@@ -76,11 +81,20 @@ int main(void)
 		handle_input_feed(input);
 		#endif
 	}
-	free(input);
+	#if defined(TASK_1) || defined(TASK_3)
 	for (int i = 0; i < 518; i++)
 		free(adj_mat[i]);
 	free(adj_mat);
 	free(no_friends);
+	#endif
+
+	#if defined(TASK_2) || defined(TASK_3)
+	// Free posts array and its contents
+	for (unsigned int i = 0; i < post_counter - 1; i++)
+		free(posts[i]);
+	free(posts);
+	#endif
+	free(input);
 	free_users();
 	return 0;
 }

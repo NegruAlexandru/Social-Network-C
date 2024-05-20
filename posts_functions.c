@@ -11,9 +11,10 @@
 
 void create_post(char *input, post_t **posts, unsigned int *post_counter)
 {
-	char *tmp = strtok(NULL, " ");
-	char *title = strtok(NULL, " ");
-	char *user = strtok(NULL, "\n");
+	strtok(input, " ");
+	char *user = strtok(NULL, " ");
+	char *title = strtok(NULL, "\"");
+	printf("title: %s\n", title);
 	int user_id = get_user_id(user);
 
 	post_t *post = calloc(1, sizeof(post_t));
@@ -37,7 +38,7 @@ void create_repost(char *input, post_t **posts, unsigned int *post_counter)
 {
 	input[strlen(input) - 1] = '\0';
 
-	char *tmp = strtok(NULL, " ");
+	strtok(input, " ");
 	char *user = strtok(NULL, " ");
 	char *post_id = strtok(NULL, " ");
 	char *repost_id = strtok(NULL, " ");

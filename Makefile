@@ -1,15 +1,15 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror -g
 
-.PHONY: build clean
+.PHONY: all build clean
 
 all: build
 
-build: friends posts feed
+build: clean friends posts feed
 
 # Any other object file that is needed for the other files
 # add it here, separated by space
-UTILS = users.o friends_functions.o
+UTILS = users.o friends_functions.o posts_functions.o
 
 friends: $(UTILS) friends.o social_media_friends.o
 	$(CC) $(CFLAGS) -o $@ $^
