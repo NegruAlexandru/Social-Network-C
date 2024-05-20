@@ -180,8 +180,24 @@ void common_repost(char *input, post_array_t *posts)
 
 void like_post(char *input, post_array_t *posts)
 {
-	(void) input;
-	(void) posts;
+	strtok(input, " ");
+	char *user = strtok(NULL, " ");
+	char *post_id = strtok(NULL, " ");
+
+	int user_id = get_user_id(user);
+	int post_id_int = atoi(post_id);
+
+	if(!posts->array[post_id_int]->likes[user_id]) {
+		posts->array[post_id_int]->likes[user_id] = calloc(1, sizeof(bool));
+		*posts->array[post_id_int]->likes[user_id] = true;
+		posts->array[post_id_int]->like_count++;
+		printf("User %s liked post \"%s\"\n", user, posts->array[post_id_int]->title);
+	} else {
+		printf("User %s unliked post \"%s\"\n", user, posts->array[post_id_int]->title);
+		free(posts->array[post_id_int]->likes[user_id]);
+		posts->array[post_id_int]->likes[user_id] = NULL;
+		posts->array[post_id_int]->like_count--;
+	}
 }
 void ratio_post(char *input, post_array_t *posts)
 {
