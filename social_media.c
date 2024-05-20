@@ -53,6 +53,10 @@ int main(void)
 	int **adj_mat = init_adj_mat();
 	int *no_friends = calloc(518, sizeof(int));
 
+	// Initialize the post counter and array
+	unsigned int post_counter = 1;
+	post_t **posts = calloc(100, sizeof(post_t *));
+
 	while (1) {
 		input = fgets(input, MAX_COMMAND_LEN, stdin);
 
@@ -65,7 +69,7 @@ int main(void)
 		#endif
 		
 		#ifdef TASK_2
-		handle_input_posts(input);
+		handle_input_posts(input, posts, &post_counter);
 		#endif
 
 		#ifdef TASK_3
