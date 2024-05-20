@@ -106,10 +106,10 @@
       {
         "id": 0,
         "name": "Post/Repost",
-        "status": "CRASHED",
-        "log": "11 (SIGSEGV) (core dumped)",
+        "status": "ERROR",
+        "log": "No such file or directory (os error 2)",
         "time_normal": 0.09135306,
-        "time_valgrind": 1.5354223710000001,
+        "time_valgrind": 1.535422371,
         "timeout": 30000,
         "test_score": 3
       },
@@ -118,7 +118,7 @@
         "name": "Post/Repost Complex",
         "status": "CRASHED",
         "log": "11 (SIGSEGV) (core dumped)",
-        "time_normal": 0.001252978,
+        "time_normal": 0.157202901,
         "time_valgrind": 3.16501074,
         "timeout": 30000,
         "test_score": 3

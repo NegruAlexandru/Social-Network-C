@@ -28,12 +28,19 @@ struct post_t {
 	g_tree_t *events;
 };
 
+typedef struct post_array_t post_array_t;
+struct post_array_t {
+	post_t **array;
+	unsigned int size;
+	unsigned int index;
+	unsigned int capacity;
+};
+
 /**
  * Function that handles the calling of every command from task 2
  *
  * Please add any necessary parameters to the functions
 */
-void handle_input_posts(char *input, post_t **posts,
-						unsigned int *post_counter);
+void handle_input_posts(char *input, post_array_t *posts);
 
 #endif // POSTS_H

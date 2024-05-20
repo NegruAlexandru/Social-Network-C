@@ -58,8 +58,11 @@ int main(void)
 
 	// Initialize the post counter and array
 	#if defined(TASK_2) || defined(TASK_3)
-	unsigned int post_counter = 1;
-	post_t **posts = calloc(100, sizeof(post_t *));
+	post_array_t *posts = calloc(1, sizeof(post_array_t));
+	posts->array = calloc(100, sizeof(post_t *));
+	posts->size = 0;
+	posts->index = 0;
+	posts->capacity = 100;
 	#endif
 
 	while (1) {
@@ -74,7 +77,7 @@ int main(void)
 		#endif
 
 		#ifdef TASK_2
-		handle_input_posts(input, posts, &post_counter);
+		handle_input_posts(input, posts);
 		#endif
 
 		#ifdef TASK_3
@@ -90,8 +93,9 @@ int main(void)
 
 	#if defined(TASK_2) || defined(TASK_3)
 	// Free posts array and its contents
-	for (unsigned int i = 0; i < post_counter - 1; i++)
-		free(posts[i]);
+	for (unsigned int i = 0; i < posts->size; i++)
+		free(posts->array[i]);
+	free(posts->array);
 	free(posts);
 	#endif
 	free(input);
