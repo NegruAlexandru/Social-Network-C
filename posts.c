@@ -39,5 +39,6 @@ void handle_input_posts(char *input, post_t **posts, unsigned int *post_counter)
 	else if (!strcmp(cmd, "get-likes"))
 		(void)cmd;
 		// TODO: Add function
+	free(commands);
 }
 

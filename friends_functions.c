@@ -13,8 +13,7 @@ void add_friend(char *input, int **mtx, int *no_friends)
 {
 	strtok(input, " ");
 	char *user1 = strtok(NULL, " ");
-	char *user2 = strtok(NULL, " ");
-	user2[strlen(user2) - 1] = '\0';
+	char *user2 = strtok(NULL, "\n");
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
 
@@ -31,8 +30,7 @@ void remove_friend(char *input, int **mtx, int *no_friends)
 {
 	strtok(input, " ");
 	char *user1 = strtok(NULL, " ");
-	char *user2 = strtok(NULL, " ");
-	user2[strlen(user2) - 1] = '\0';
+	char *user2 = strtok(NULL, "\n");
 
 	int id1 = (int)get_user_id(user1);
 	int id2 = (int)get_user_id(user2);
@@ -50,8 +48,7 @@ void distance_between_friends(char *input, int **mtx)
 {
 	strtok(input, " ");
 	char *user1 = strtok(NULL, " ");
-	char *user2 = strtok(NULL, " ");
-	user2[strlen(user2) - 1] = '\0';
+	char *user2 = strtok(NULL, "\n");
 
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
@@ -75,7 +72,6 @@ void distance_between_friends(char *input, int **mtx)
 			}
 		}
 	}
-
 	if(distance[id2] == 0)
 		printf("There is no way to get from %s to %s\n", user1, user2);
 	else
@@ -89,8 +85,7 @@ void distance_between_friends(char *input, int **mtx)
 void suggestions(char *input, int **mtx)
 {
 	strtok(input, " ");
-	char *user = strtok(NULL, " ");
-	user[strlen(user)] = '\0';
+	char *user = strtok(NULL, "\n");
 	int id = get_user_id(user);
 
 	int *visited = calloc(518, sizeof(int));
@@ -144,8 +139,7 @@ void common_friends(char *input, int **mtx)
 {
 	strtok(input, " ");
 	char *user1 = strtok(NULL, " ");
-	char *user2 = strtok(NULL, " ");
-	user2[strlen(user2) - 1] = '\0';
+	char *user2 = strtok(NULL, "\n");
 
 	int id1 = get_user_id(user1);
 	int id2 = get_user_id(user2);
@@ -159,17 +153,20 @@ void common_friends(char *input, int **mtx)
 		}
 	}
 
-	printf("The common friends between %s and %s are:\n", user1, user2);
-	for (int i = 0; i < count; i++) {
-		printf("%s\n", get_user_name(common_friends[i]));
+	if(count == 0)
+		printf("No common friends for %s and %s\n", user1, user2);
+	else{
+		printf("The common friends between %s and %s are:\n", user1, user2);
+		for (int i = 0; i < count; i++) {
+			printf("%s\n", get_user_name(common_friends[i]));
+		}
 	}
 }
 
 void number_friends(char *input, int *no_friends)
 {
 	strtok(input, " ");
-	char *user = strtok(NULL, " ");
-	user[strlen(user) - 1] = '\0';
+	char *user = strtok(NULL, "\n");
 
 	int id = get_user_id(user);
 
@@ -179,8 +176,7 @@ void number_friends(char *input, int *no_friends)
 void popular_friends(char *input, int **adj_mat, int *no_friends)
 {
 	strtok(input, " ");
-	char *user = strtok(NULL, " ");
-	user[strlen(user) - 1] = '\0';
+	char *user = strtok(NULL, "\n");
 
 	int id = get_user_id(user);
 	int max_friends = no_friends[id];
