@@ -61,7 +61,6 @@ int main(void)
 	post_array_t *posts = calloc(1, sizeof(post_array_t));
 	posts->array = calloc(100, sizeof(post_t *));
 	posts->size = 0;
-	posts->index = 1;
 	posts->capacity = 100;
 	#endif
 

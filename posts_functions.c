@@ -29,7 +29,7 @@ void create_post(char *input, post_array_t *posts)
 	}
 
 	post_t *post = calloc(1, sizeof(post_t));
-	post->id = posts->index;
+	post->id = posts->size + 1;
 	post->user_id = user_id;
 	post->title = strdup(title);
 	post->like_count = 0;
@@ -39,8 +39,7 @@ void create_post(char *input, post_array_t *posts)
 	post->events->root->children = calloc(100, sizeof(g_node_t *));
 	post->events->root->n_children = 0;
 
-	posts->array[posts->index - 1] = post;
-	posts->index++;
+	posts->array[posts->size] = post;
 	posts->size++;
 
 	printf("Created \"%s\" for %s\n", title, user);
@@ -55,6 +54,7 @@ void create_repost(char *input, post_array_t *posts)
 
 	int user_id = get_user_id(user);
 	int post_id_int = atoi(post_id);
+	post_id_int--;
 
 	if (repost_id) {
 		// repost la repost
@@ -62,7 +62,7 @@ void create_repost(char *input, post_array_t *posts)
 
 		// Create repost
 		post_t *repost = calloc(1, sizeof(post_t));
-		repost->id = posts->index;
+		repost->id = posts->size + 1;
 		repost->user_id = user_id;
 		repost->title = NULL;
 		repost->like_count = 0;
@@ -75,13 +75,7 @@ void create_repost(char *input, post_array_t *posts)
 		repost_node->n_children = 0;
 
 		// Tree root
-		g_node_t *root;
-		for (unsigned int i = 0; i < posts->size; i++) {
-			if (posts->array[i]->id == post_id_int) {
-				root = posts->array[i]->events->root;
-				break;
-			}
-		}
+		g_node_t *root = posts->array[post_id_int]->events->root;
 
 		// Find repost_id node
 		g_node_t *repost_id_node = NULL;
@@ -110,11 +104,13 @@ void create_repost(char *input, post_array_t *posts)
 		repost_id_node->children[repost_id_node->n_children] = repost_node;
 		repost_id_node->n_children++;
 
-		posts->index++;
+		posts->array[posts->size] = repost;
+		posts->size++;
+
 	} else {
 		// repost la post
 		post_t *post = calloc(1, sizeof(post_t));
-		post->id = posts->index;
+		post->id = posts->size + 1;
 		post->user_id = user_id;
 		post->title = NULL;
 		post->like_count = 0;
@@ -125,17 +121,14 @@ void create_repost(char *input, post_array_t *posts)
 		node->children = calloc(1, sizeof(g_node_t *));
 		node->n_children = 0;
 
-		for (unsigned int i = 0; i < posts->size; i++) {
-			if (posts->array[i]->id == post_id_int) {
-				posts->array[i]->events->root->children[posts->array[i]->events->root->n_children] = node;
-				posts->array[i]->events->root->n_children++;
-				break;
-			}
-		}
+		posts->array[post_id_int]->events->root->children[posts->array[post_id_int]->events->root->n_children] = node;
+		posts->array[post_id_int]->events->root->n_children++;
 
-		posts->index++;
+		posts->array[posts->size] = post;
+		posts->size++;
 	}
-	printf("Created repost #%d for %s\n", posts->index - 1, user);
+
+	printf("Created repost #%d for %s\n", posts->size, user);
 }
 
 void common_repost(char *input, post_array_t *posts)
@@ -154,6 +147,7 @@ void like_post(char *input, post_array_t *posts)
 
 	int user_id = get_user_id(user);
 	int post_id_int = atoi(post_id);
+	post_id_int--;
 
 	if(!repost_id) {
 		if(!posts->array[post_id_int]->likes[user_id]) {
@@ -238,13 +232,7 @@ void get_reposts(char *input, post_array_t *posts)
 	char *repost_id = strtok(NULL, " ");
 
 	int post_id_int = atoi(post_id);
-
-	for (unsigned int i = 0; i < posts->size; i++) {
-		if (posts->array[i]->id == post_id_int) {
-			post_id_int = i;
-			break;
-		}
-	}
+	post_id_int--;
 
 	if(!repost_id) {
 		printf("\"%s\" - Post by %s\n", posts->array[post_id_int]->title, get_user_name(posts->array[post_id_int]->user_id));

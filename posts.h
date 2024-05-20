@@ -32,7 +32,6 @@ typedef struct post_array_t post_array_t;
 struct post_array_t {
 	post_t **array;
 	unsigned int size;
-	unsigned int index;
 	unsigned int capacity;
 };
 
