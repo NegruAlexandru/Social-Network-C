@@ -18,15 +18,9 @@ void handle_input_posts(char *input, post_array_t *posts)
 		create_post(input, posts);
 	else if (!strcmp(cmd, "repost"))
 		create_repost(input, posts);
-	else if (!strcmp(cmd, "common-repost")) {
-		char *post_id = strtok(NULL, " ");
-		char *repost_id1 = strtok(NULL, " ");
-		char *repost_id2 = strtok(NULL, " ");
-		for (unsigned int i = 0; i < posts->size; i++) {
-			if (posts->array[i]->id == atoi(post_id))
-				common_repost(posts->array[i]->events->root, atoi(repost_id1), atoi(repost_id2));
-		}
-	} else if (!strcmp(cmd, "like"))
+	else if (!strcmp(cmd, "common-repost"))
+		common_repost(input, posts);
+	else if (!strcmp(cmd, "like"))
 		like_post(input, posts);
 	else if (!strcmp(cmd, "ratio"))
 		ratio_post(input, posts);

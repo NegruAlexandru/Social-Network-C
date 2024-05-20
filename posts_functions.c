@@ -141,6 +141,8 @@ void create_repost(char *input, post_array_t *posts)
 void common_repost(char *input, post_array_t *posts)
 {
 	// bfs
+	(void) input;
+	(void) posts;
 }
 
 void like_post(char *input, post_array_t *posts)

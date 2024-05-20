@@ -7,7 +7,7 @@
 
 void create_post(char *input, post_array_t *posts);
 void create_repost(char *input, post_array_t *posts);
-void common_repost(g_node_t *root, int id1, int id2);
+void common_repost(char *input, post_array_t *posts);
 void like_post(char *input, post_array_t *posts);
 void ratio_post(char *input, post_array_t *posts);
 void delete_post(char *input, post_array_t *posts);
