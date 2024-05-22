@@ -31,6 +31,7 @@ void create_post(char *input, post_array_t *posts)
 
 	post_t *post = calloc(1, sizeof(post_t));
 	post->id = posts->size + 1;
+	post->parent_post_id = 0;
 	post->user_id = user_id;
 	post->title = strdup(title);
 	post->like_count = 0;
@@ -62,6 +63,7 @@ void create_repost(char *input, post_array_t *posts)
 		// Create repost
 		post_t *repost = calloc(1, sizeof(post_t));
 		repost->id = posts->size + 1;
+		repost->parent_post_id = post_id_int + 1;
 		repost->user_id = user_id;
 		repost->title = NULL;
 		repost->like_count = 0;
@@ -108,6 +110,7 @@ void create_repost(char *input, post_array_t *posts)
 		// repost la post
 		post_t *repost = calloc(1, sizeof(post_t));
 		repost->id = posts->size + 1;
+		repost->parent_post_id = post_id_int + 1;
 		repost->user_id = user_id;
 		repost->title = NULL;
 		repost->like_count = 0;

@@ -22,6 +22,7 @@ typedef struct post_t post_t;
 struct post_t {
 	int id;
 	char *title;
+	int parent_post_id;
 	int user_id;
 	int like_count;
 	bool likes[MAX_USERS];
