@@ -5,6 +5,6 @@
 void feed(char *input, int **adj_mat, post_array_t *posts);
 void view_profile(char *input, post_array_t *posts);
 void friends_repost(char *input);
-void common_groups(char *input);
+void common_groups(char *input, int **adj_mat);
 
 #endif

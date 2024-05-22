@@ -22,6 +22,6 @@ void handle_input_feed(char *input, int **adj_mat, post_array_t *posts)
 	else if (!strcmp(cmd, "friends-repost"))
 		friends_repost(input);
 	else if (!strcmp(cmd, "common-groups"))
-		common_groups(input);
+		common_groups(input, adj_mat);
 	free(commands);
 }
