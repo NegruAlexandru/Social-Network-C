@@ -72,20 +72,6 @@ void friends_repost(char *input, int **adj_mat, post_array_t *posts)
     }
 }
 
-<<<<<<< HEAD
-void common_groups(char *input, int **adj_mat)
-{
-    strtok(input, " ");
-    char *user = strtok(NULL, "\n");
-
-    int user_id = get_user_id(user);
-
-    printf("The closest friend group of %s is:\n", user);
-
-    // clique is a group of friends that are all friends with each other
-
-    
-=======
 // Helper function to check if a group of users are all friends with each other
 int is_clique(int *group, int group_size, int **adj_mat) {
     for (int i = 0; i < group_size; i++) {
@@ -157,5 +143,4 @@ void common_groups(char *input, int **adj_mat) {
     // Free allocated memory
     free(current_clique);
     free(best_clique);
->>>>>>> f0ff1dc (update 97 points)
 }

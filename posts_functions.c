@@ -352,7 +352,7 @@ void delete_post(char *input, post_array_t *posts)
 {
 	strtok(input, " ");
 	char *post_id = strtok(NULL, " ");
-	char *repost_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, "\n ");
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
@@ -363,27 +363,32 @@ void delete_post(char *input, post_array_t *posts)
 		int repost_id_int = atoi(repost_id);
 		g_node_t *root = posts->array[post_id_int]->events->root;
 
-		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+		g_node_t ***queue = calloc(4000, sizeof(g_node_t *));
 		int visited[4000] = {0};
 		int front = 0, rear = 0;
-		queue[rear++] = root;
+		queue[rear++] = &root;
 
 		while (front < rear) {
-			g_node_t *node = queue[front++];
-			visited[((post_t *)node->data)->id] = 1;
+			g_node_t **node = queue[front++];
+			visited[((post_t *)(*node)->data)->id] = 1;
 
-			if (((post_t *)node->data)->id == repost_id_int) {
+			if (((post_t *)(*node)->data)->id == repost_id_int) {
 				printf("Deleted repost #%d of post \"%s\"\n", repost_id_int, posts->array[post_id_int]->title);
-				free_repost(posts, &node);
+
+				g_node_t **tmp = node;
+				free_repost(posts, node);
 				posts->array[repost_id_int - 1] = NULL;
-				posts->array[post_id_int]->events->root->n_children--;
-				posts->array[post_id_int]->events->root->children[posts->array[post_id_int]->events->root->n_children] = NULL;
+				*tmp = NULL;
+
 				break;
 			}
 
-			for (int i = 0; i < node->n_children; i++) {
-				if (!visited[((post_t *)node->children[i]->data)->id])
-					queue[rear++] = node->children[i];
+			for (int i = 0; i < (*node)->n_children; i++) {
+				if (!visited[((post_t *)(*node)->children[i]->data)->id]) {
+					if ((*node)->children[i]) {
+						queue[rear++] = &(*node)->children[i];
+					}
+				}
 			}
 		}
 		free(queue);
@@ -440,7 +445,8 @@ void print_reposts(g_node_t *root, int post_id)
 			   get_user_name(user_id)); // "Repost #%d by %s\n
 
 	for (int i = 0; i < root->n_children; i++)
-		print_reposts(root->children[i], post_id);
+		if (root->children[i])
+			print_reposts(root->children[i], post_id);
 }
 
 void get_reposts(char *input, post_array_t *posts)
