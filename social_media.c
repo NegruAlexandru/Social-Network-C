@@ -59,7 +59,7 @@ int main(void)
 	// Initialize the post counter and array
 	#if defined(TASK_2) || defined(TASK_3)
 	post_array_t *posts = calloc(1, sizeof(post_array_t));
-	posts->array = calloc(100, sizeof(post_t *));
+	posts->array = calloc(200, sizeof(post_t *));
 	posts->size = 0;
 	posts->capacity = 100;
 	#endif

@@ -56,6 +56,18 @@ void create_repost(char *input, post_array_t *posts)
 	int user_id = get_user_id(user);
 	int post_id_int = atoi(post_id);
 	post_id_int--;
+	if (posts->size == posts->capacity) {
+		posts->capacity *= 2;
+		post_t **tmp = realloc(posts->array, posts->capacity *
+							   sizeof(post_t *));
+
+		if (!tmp) {
+			printf("Error reallocating memory");
+			return;
+		}
+
+		posts->array = tmp;
+	}
 	if (repost_id) {
 		// repost la repost
 		int repost_id_int = atoi(repost_id);

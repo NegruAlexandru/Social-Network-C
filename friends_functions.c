@@ -109,7 +109,7 @@ void suggestions(char *input, int **mtx)
 		}
 	}
 
-	int suggestions[10];
+	int suggestions[100];
 	int count = 0;
 
 	for (int i = 0; i < 518; i++) {
@@ -125,9 +125,13 @@ void suggestions(char *input, int **mtx)
 			}
 	}
 
-	printf("Suggestions for %s:\n", user);
-	for (int i = 0; i < count; i++)
-		printf("%s\n", get_user_name(suggestions[i]));
+	if(count == 0)
+		printf("There are no suggestions for %s\n", user);
+	else {
+		printf("Suggestions for %s:\n", user);
+		for (int i = 0; i < count; i++)
+			printf("%s\n", get_user_name(suggestions[i]));
+	}
 
 	free(visited);
 	free(queue);
