@@ -26,18 +26,11 @@ void free_node(g_node_t *node)
 // Function to free the entire posts array
 void free_posts(post_array_t *posts)
 {
-<<<<<<< HEAD
-	for (unsigned int i = 0; i < posts->size; i++) {
-		if (posts->array[i]) {
-			// Free the post's title
-			free(posts->array[i]->title);
-=======
     for (unsigned int i = 0; i < posts->size; i++) {
         if (posts->array[i]) {
             // Free the post's title
 			if (posts->array[i]->title)
             	free(posts->array[i]->title);
->>>>>>> dea4dea (fixed memory leaks)
 
 			// Free the event tree if it exists
 			if (posts->array[i]->events) {
