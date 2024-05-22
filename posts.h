@@ -24,7 +24,7 @@ struct post_t {
 	char *title;
 	int user_id;
 	int like_count;
-	bool *likes[MAX_USERS];
+	bool likes[MAX_USERS];
 	g_tree_t *events;
 };
 
