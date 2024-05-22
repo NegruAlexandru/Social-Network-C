@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "posts.h"
 #include "feed.h"
 #include "users.h"
+#include "feed_functions.h"
 
-void handle_input_feed(char *input)
+void handle_input_feed(char *input, int **adj_mat, post_array_t *posts)
 {
 	char *commands = strdup(input);
 	char *cmd = strtok(commands, "\n ");
@@ -14,16 +16,12 @@ void handle_input_feed(char *input)
 		return;
 
 	if (!strcmp(cmd, "feed"))
-		(void)cmd;
-		// TODO: Add function
+		feed(input, adj_mat, posts);
 	else if (!strcmp(cmd, "view-profile"))
-		(void)cmd;
-		// TODO: Add function
+		view_profile(input);
 	else if (!strcmp(cmd, "friends-repost"))
-		(void)cmd;
-		// TODO: Add function
+		friends_repost(input);
 	else if (!strcmp(cmd, "common-groups"))
-		(void)cmd;
-		// TODO: Add function
+		common_groups(input);
 	free(commands);
 }

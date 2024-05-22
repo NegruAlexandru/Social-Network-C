@@ -1,3 +1,4 @@
+#include "posts.h"
 #ifndef FEED_H
 #define FEED_H
 
@@ -6,6 +7,6 @@
  *
  * Please add any necessary parameters to the functions
 */
-void handle_input_feed(char *input);
+void handle_input_feed(char *input, int **adj_mat, post_array_t *posts);
 
 #endif // FEED_H
