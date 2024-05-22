@@ -271,11 +271,28 @@ void like_post(char *input, post_array_t *posts)
 		free(queue);
 	}
 }
+
 void ratio_post(char *input, post_array_t *posts)
 {
 	(void) input;
 	(void) posts;
 }
+
+void free_repost(g_node_t *root)
+{
+	if (!root)
+		return;
+
+	for (int i = 0; i < root->n_children; i++) {
+		if (root->children[i]) {
+			free_repost(root->children[i]);
+		}
+	}
+
+	free(root->children);
+	free(root);
+}
+
 void delete_post(char *input, post_array_t *posts)
 {
 	strtok(input, " ");
@@ -306,9 +323,7 @@ void delete_post(char *input, post_array_t *posts)
 
 			if (((post_t *)node->data)->id == repost_id_int) {
 				printf("Deleted repost #%d of post \"%s\"\n", repost_id_int, posts->array[post_id_int]->title);
-				free(((post_t *)node->data));
-				free(node->children);
-				free(node);
+				free_repost(node);
 				break;
 			}
 
