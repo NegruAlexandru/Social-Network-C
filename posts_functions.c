@@ -106,15 +106,15 @@ void create_repost(char *input, post_array_t *posts)
 		free(queue);
 	} else {
 		// repost la post
-		post_t *post = calloc(1, sizeof(post_t));
-		post->id = posts->size + 1;
-		post->user_id = user_id;
-		post->title = NULL;
-		post->like_count = 0;
-		post->events = NULL;
+		post_t *repost = calloc(1, sizeof(post_t));
+		repost->id = posts->size + 1;
+		repost->user_id = user_id;
+		repost->title = NULL;
+		repost->like_count = 0;
+		repost->events = NULL;
 
 		g_node_t *node = calloc(1, sizeof(g_node_t));
-		node->data = post;
+		node->data = repost;
 		node->children = calloc(100, sizeof(g_node_t *));
 		node->n_children = 0;
 
@@ -122,7 +122,7 @@ void create_repost(char *input, post_array_t *posts)
 		posts->array[post_id_int]->events->root->children[n_children] = node;
 		posts->array[post_id_int]->events->root->n_children++;
 
-		posts->array[posts->size] = post;
+		posts->array[posts->size] = repost;
 		posts->size++;
 	}
 
@@ -308,17 +308,35 @@ void ratio_post(char *input, post_array_t *posts)
 			   original_post->id, max_likes_repost_id);
 }
 
-void free_repost(g_node_t *root)
+void free_repost(post_array_t *posts, g_node_t **root)
 {
-	if (!root)
+	if (!*root)
 		return;
 
+<<<<<<< HEAD
 	for (int i = 0; i < root->n_children; i++)
 		if (root->children[i])
 			free_repost(root->children[i]);
+=======
+	for (int i = 0; i < (*root)->n_children; i++)
+		if ((*root)->children[i])
+			free_repost(posts, &(*root)->children[i]);
+>>>>>>> dea4dea (fixed memory leaks)
 
-	free(root->children);
-	free(root);
+	free((*root)->children);
+	posts->array[((post_t *)(*root)->data)->id - 1] = NULL;
+	free((*root)->data);
+	free(*root);
+
+	*root = NULL;
+}
+
+void free_post(post_array_t *posts, post_t *post)
+{
+	free(post->title);
+	free_repost(posts, &post->events->root);
+	free(post->events);
+	free(post);
 }
 
 void delete_post(char *input, post_array_t *posts)
@@ -329,12 +347,17 @@ void delete_post(char *input, post_array_t *posts)
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
+<<<<<<< HEAD
 	if (!repost_id) {
 		free(posts->array[post_id_int]->title);
 		free(posts->array[post_id_int]->events->root->children);
 		free(posts->array[post_id_int]->events->root);
 		free(posts->array[post_id_int]->events);
 		free(posts->array[post_id_int]);
+=======
+	if(!repost_id){
+		free_post(posts, posts->array[post_id_int]);
+>>>>>>> dea4dea (fixed memory leaks)
 		posts->array[post_id_int] = NULL;
 	} else {
 		int repost_id_int = atoi(repost_id);
@@ -350,9 +373,17 @@ void delete_post(char *input, post_array_t *posts)
 			visited[((post_t *)node->data)->id] = 1;
 
 			if (((post_t *)node->data)->id == repost_id_int) {
+<<<<<<< HEAD
 				printf("Deleted repost #%d of post \"%s\"\n",
 					   repost_id_int, posts->array[post_id_int]->title);
 				free_repost(node);
+=======
+				printf("Deleted repost #%d of post \"%s\"\n", repost_id_int, posts->array[post_id_int]->title);
+				free_repost(posts, &node);
+				posts->array[repost_id_int - 1] = NULL;
+				posts->array[post_id_int]->events->root->n_children--;
+				posts->array[post_id_int]->events->root->children[posts->array[post_id_int]->events->root->n_children] = NULL;
+>>>>>>> dea4dea (fixed memory leaks)
 				break;
 			}
 
