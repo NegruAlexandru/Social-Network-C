@@ -60,4 +60,5 @@ void friends_repost(char *input)
 void common_groups(char *input, int **adj_mat)
 {
     (void)input;
+    (void)adj_mat;
 }
