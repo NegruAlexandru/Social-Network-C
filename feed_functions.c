@@ -52,9 +52,24 @@ void view_profile(char *input, post_array_t *posts)
 	}
 }
 
-void friends_repost(char *input)
+void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 {
-	(void)input;
+    strtok(input, " ");
+    char *user = strtok(NULL, " ");
+    char *post_id = strtok(NULL, "\n");
+
+    int user_id = get_user_id(user);
+    int post_id_int = atoi(post_id);
+
+    for(unsigned int i = 0; i < posts->size; i++) {
+        if(posts->array[i]->parent_post_id == post_id_int) {
+            for(int j = 0; j < 518; j++) {
+                if(adj_mat[user_id][j] == 1 && posts->array[i]->user_id == j) {
+                    printf("%s\n", get_user_name(j));
+                }
+            }
+        }
+    }
 }
 
 void common_groups(char *input, int **adj_mat)
