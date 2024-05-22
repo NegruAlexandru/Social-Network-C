@@ -132,60 +132,84 @@ void create_repost(char *input, post_array_t *posts)
 	printf("Created repost #%d for %s\n", posts->size, user);
 }
 
-int find_path(g_node_t *root, int target, g_node_t **path, int path_index) {
-    if (!root) return 0;
+g_node_t *find_lca(g_node_t *root, int repost_id_1, int repost_id_2)
+{
+    if (!root)
+        return NULL;
 
-    path[path_index] = root;
-    path_index++;
+    if (((post_t *)root->data)->id == repost_id_1 || ((post_t *)root->data)->id == repost_id_2)
+        return root;
 
-    if (((post_t *)root->data)->id == target) return 1;
+    int count = 0;
+    g_node_t *temp = NULL;
+    g_node_t *lca = NULL;
 
-    for (int i = 0; i < root->n_children; i++) {
-        if (find_path(root->children[i], target, path, path_index)) return 1;
+    for (int i = 0; i < root->n_children; i++)
+    {
+        temp = find_lca(root->children[i], repost_id_1, repost_id_2);
+        if (temp != NULL)
+        {
+            count++;
+            lca = temp;
+        }
     }
 
-    return 0;
+    if (count == 2)
+        return root;
+
+    return lca;
 }
 
-g_node_t* find_lca(g_node_t *root, int id1, int id2) {
-    g_node_t *path1[100];
-    g_node_t *path2[100];
-    int path1_len, path2_len;
-
-    path1_len = find_path(root, id1, path1, 0);
-    path2_len = find_path(root, id2, path2, 0);
-
-    if (path1_len == 0 || path2_len == 0) return NULL;
-
-    int i;
-    for (i = 0; i < path1_len && i < path2_len; i++) {
-        if (path1[i] != path2[i]) break;
-    }
-
-    return path1[i-1];
-}
-
-void common_repost(char *input, post_array_t *posts) {
+// Implementation of common_repost function
+void common_repost(char *input, post_array_t *posts)
+{
     strtok(input, " ");
     char *post_id = strtok(NULL, " ");
-    char *repost_id1 = strtok(NULL, " ");
-    char *repost_id2 = strtok(NULL, " ");
+    char *repost_id_1 = strtok(NULL, " ");
+    char *repost_id_2 = strtok(NULL, " ");
 
     int post_id_int = atoi(post_id);
+    int repost_id_1_int = atoi(repost_id_1);
+    int repost_id_2_int = atoi(repost_id_2);
     post_id_int--;
-
-    int repost_id1_int = atoi(repost_id1);
-    int repost_id2_int = atoi(repost_id2);
 
     g_node_t *root = posts->array[post_id_int]->events->root;
 
-    g_node_t *lca = find_lca(root, repost_id1_int, repost_id2_int);
+    g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+    int visited[4000] = {0};
+    int front = 0, rear = 0;
+    queue[rear++] = root;
 
-    if (lca) {
-		printf("The first common repost of %d and %d is %d\n", repost_id1_int, repost_id2_int, ((post_t *)lca->data)->id);
-    } else {
-        printf("No common ancestor found.\n");
+    g_node_t *lca = NULL;
+
+    while (front < rear)
+    {
+        g_node_t *node = queue[front++];
+        visited[((post_t *)node->data)->id] = 1;
+
+        if (((post_t *)node->data)->id == repost_id_1_int || ((post_t *)node->data)->id == repost_id_2_int)
+        {
+            lca = find_lca(root, repost_id_1_int, repost_id_2_int);
+            break;
+        }
+
+        for (int i = 0; i < node->n_children; i++)
+        {
+            if (!visited[((post_t *)node->children[i]->data)->id])
+                queue[rear++] = node->children[i];
+        }
     }
+
+    if (lca)
+    {
+        printf("The first common repost of %d and %d is %d\n", repost_id_1_int, repost_id_2_int, ((post_t *)lca->data)->id);
+    }
+    else
+    {
+        printf("No common repost found.\n");
+    }
+
+    free(queue);
 }
 
 void like_post(char *input, post_array_t *posts)
