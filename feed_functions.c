@@ -74,6 +74,31 @@ void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 
 void common_groups(char *input, int **adj_mat)
 {
-    (void)input;
-    (void)adj_mat;
+    strtok(input, " ");
+    char *user = strtok(NULL, " ");
+
+    int user_id = get_user_id(user);
+
+    int *friends = adj_mat[user_id];
+    int *common_groups = calloc(518, sizeof(int));
+
+    for (int i = 0; i < 518; i++) {
+        if (friends[i] == 1) {
+            for (int j = 0; j < 518; j++) {
+                if (adj_mat[i][j] == 1) {
+                    common_groups[j] = 1;
+                }
+            }
+        }
+    }
+
+    printf("The closest friend group of %s is:\n", user);
+
+    for (int i = 0; i < 518; i++) {
+        if (common_groups[i] == 1) {
+            printf("%s\n", get_user_name(i));
+        }
+    }
+
+    free(common_groups);
 }
