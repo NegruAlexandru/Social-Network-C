@@ -40,6 +40,8 @@ struct post_array_t {
  *
  * Please add any necessary parameters to the functions
 */
+void free_node(g_node_t *node);
+void free_posts(post_array_t *posts);
 void handle_input_posts(char *input, post_array_t *posts);
 
 #endif // POSTS_H

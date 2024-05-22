@@ -92,10 +92,7 @@ int main(void)
 
 	#if defined(TASK_2) || defined(TASK_3)
 	// Free posts array and its contents
-	for (unsigned int i = 0; i < posts->size; i++)
-		free(posts->array[i]);
-	free(posts->array);
-	free(posts);
+	free_posts(posts);
 	#endif
 	free(input);
 	free_users();

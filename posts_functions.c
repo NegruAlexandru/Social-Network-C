@@ -106,6 +106,7 @@ void create_repost(char *input, post_array_t *posts)
 
 		posts->array[posts->size] = repost;
 		posts->size++;
+		free(queue);
 
 	} else {
 		// repost la post
@@ -200,14 +201,14 @@ void like_post(char *input, post_array_t *posts)
 
 	if(!repost_id) {
 		if(!posts->array[post_id_int]->likes[user_id]) {
-		posts->array[post_id_int]->likes[user_id] = calloc(1, sizeof(bool));
-		*posts->array[post_id_int]->likes[user_id] = true;
+		// posts->array[post_id_int]->likes[user_id] = calloc(1, sizeof(bool));
+		posts->array[post_id_int]->likes[user_id] = true;
 		posts->array[post_id_int]->like_count++;
 		printf("User %s liked post \"%s\"\n", user, posts->array[post_id_int]->title);
 		} else {
 			printf("User %s unliked post \"%s\"\n", user, posts->array[post_id_int]->title);
-			free(posts->array[post_id_int]->likes[user_id]);
-			posts->array[post_id_int]->likes[user_id] = NULL;
+			// free(posts->array[post_id_int]->likes[user_id]);
+			posts->array[post_id_int]->likes[user_id] = false;
 			posts->array[post_id_int]->like_count--;
 		}
 	} else {
@@ -225,14 +226,14 @@ void like_post(char *input, post_array_t *posts)
 
 			if (((post_t *)node->data)->id == repost_id_int) {
 				if(!((post_t *)node->data)->likes[user_id]) {
-					((post_t *)node->data)->likes[user_id] = calloc(1, sizeof(bool));
-					*((post_t *)node->data)->likes[user_id] = true;
+					// ((post_t *)node->data)->likes[user_id] = calloc(1, sizeof(bool));
+					((post_t *)node->data)->likes[user_id] = true;
 					((post_t *)node->data)->like_count++;
 					printf("User %s liked repost \"%s\"\n", user, posts->array[post_id_int]->title);
 				} else {
 					printf("User %s unliked repost \"%s\"\n", user, posts->array[post_id_int]->title);
-					free(((post_t *)node->data)->likes[user_id]);
-					((post_t *)node->data)->likes[user_id] = NULL;
+					// free(((post_t *)node->data)->likes[user_id]);
+					((post_t *)node->data)->likes[user_id] = false;
 					((post_t *)node->data)->like_count--;
 				}
 				break;
@@ -253,8 +254,47 @@ void ratio_post(char *input, post_array_t *posts)
 }
 void delete_post(char *input, post_array_t *posts)
 {
-	(void) input;
-	(void) posts;
+	strtok(input, " ");
+	char *post_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, " ");
+	int post_id_int = atoi(post_id);
+	post_id_int--;
+
+	if(!repost_id){
+		free(posts->array[post_id_int]->title);
+		free(posts->array[post_id_int]->events->root->children);
+		free(posts->array[post_id_int]->events->root);
+		free(posts->array[post_id_int]->events);
+		free(posts->array[post_id_int]);
+		posts->array[post_id_int] = NULL;
+	} else {
+		int repost_id_int = atoi(repost_id);
+		g_node_t *root = posts->array[post_id_int]->events->root;
+
+		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+		int visited[4000] = {0};
+		int front = 0, rear = 0;
+		queue[rear++] = root;
+
+		while (front < rear) {
+			g_node_t *node = queue[front++];
+			visited[((post_t *)node->data)->id] = 1;
+
+			if (((post_t *)node->data)->id == repost_id_int) {
+				printf("Deleted repost #%d of post \"%s\"\n", repost_id_int, posts->array[post_id_int]->title);
+				free(((post_t *)node->data));
+				free(node->children);
+				free(node);
+				break;
+			}
+
+			for (int i = 0; i < node->n_children; i++) {
+				if (!visited[((post_t *)node->children[i]->data)->id])
+					queue[rear++] = node->children[i];
+			}
+		}
+		free(queue);
+	}
 }
 
 void get_likes(char *input, post_array_t *posts)
@@ -342,5 +382,6 @@ void get_reposts(char *input, post_array_t *posts)
 					queue[rear++] = node->children[i];
 			}
 		}
+		free(queue);
 	}
 }
