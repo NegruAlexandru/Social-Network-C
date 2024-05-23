@@ -3,6 +3,9 @@
 #ifndef POSTS_FUNCTIONS_H
 #define POSTS_FUNCTIONS_H
 
+#define MAX_CHILDREN 100
+#define MAX_QUEUE_SIZE 100
+
 /**
  * Function that handles the creation of a post
 */
