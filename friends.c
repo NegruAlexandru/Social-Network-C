@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-
 #include "friends.h"
 #include "users.h"
 #include "friends_functions.h"

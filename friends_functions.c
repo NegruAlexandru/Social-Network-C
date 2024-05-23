@@ -1,12 +1,8 @@
-//
-// Created by Alex on 14/05/2024.
-//
-
-#include "friends_functions.h"
-#include "users.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "friends_functions.h"
+#include "users.h"
 
 void add_friend(char *input, int **adj_mat, int *no_friends)
 {

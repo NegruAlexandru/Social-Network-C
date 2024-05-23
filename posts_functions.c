@@ -1,21 +1,21 @@
-//
-// Created by Alex on 20/05/2024.
-//
-
+#include "posts_functions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "users.h"
-#include "posts.h"
-#include "posts_functions.h"
+
 
 void create_post(char *input, post_array_t *posts)
 {
+	// Parse the input
 	strtok(input, " ");
 	char *user = strtok(NULL, " ");
 	char *title = strtok(NULL, "\"");
+
+	// Get the user id
 	int user_id = get_user_id(user);
 
+	// Check if the posts array needs to be resized
 	if (posts->size == posts->capacity) {
 		posts->capacity *= 2;
 		post_t **tmp = realloc(posts->array, posts->capacity *
@@ -29,6 +29,7 @@ void create_post(char *input, post_array_t *posts)
 		posts->array = tmp;
 	}
 
+	// Create the post
 	post_t *post = calloc(1, sizeof(post_t));
 	post->id = posts->size + 1;
 	post->parent_post_id = 0;
@@ -40,6 +41,8 @@ void create_post(char *input, post_array_t *posts)
 	post->events->root->data = post;
 	post->events->root->children = calloc(100, sizeof(g_node_t *));
 	post->events->root->n_children = 0;
+
+	// Add the post to the posts array
 	posts->array[posts->size] = post;
 	posts->size++;
 
@@ -49,49 +52,50 @@ void create_post(char *input, post_array_t *posts)
 post_t *create_repost_of_repost(post_array_t *posts, int post_id_int,
 								int repost_id_int, int user_id)
 {
-		post_t *repost = calloc(1, sizeof(post_t));
-		repost->id = posts->size + 1;
-		repost->parent_post_id = post_id_int + 1;
-		repost->user_id = user_id;
-		repost->title = NULL;
-		repost->like_count = 0;
-		repost->events = NULL;
+	// Create repost
+	post_t *repost = calloc(1, sizeof(post_t));
+	repost->id = posts->size + 1;
+	repost->parent_post_id = post_id_int + 1;
+	repost->user_id = user_id;
+	repost->title = NULL;
+	repost->like_count = 0;
+	repost->events = NULL;
 
-		// Create repost node
-		g_node_t *repost_node = calloc(1, sizeof(g_node_t));
-		repost_node->data = repost;
-		repost_node->children = calloc(100, sizeof(g_node_t *));
-		repost_node->n_children = 0;
+	// Create repost node
+	g_node_t *repost_node = calloc(1, sizeof(g_node_t));
+	repost_node->data = repost;
+	repost_node->children = calloc(100, sizeof(g_node_t *));
+	repost_node->n_children = 0;
 
-		// Tree root
-		g_node_t *root = posts->array[post_id_int]->events->root;
+	// Tree root
+	g_node_t *root = posts->array[post_id_int]->events->root;
 
-		// Find repost_id node
-		g_node_t *repost_id_node = NULL;
+	// Find repost_id node
+	g_node_t *repost_id_node = NULL;
 
-		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
-		int visited[4000] = {0};
-		int front = 0, rear = 0;
-		queue[rear++] = root;
+	g_node_t **queue = calloc(4000, sizeof(g_node_t *));
+	int visited[4000] = {0};
+	int front = 0, rear = 0;
+	queue[rear++] = root;
 
-		while (front < rear) {
-			g_node_t *node = queue[front++];
-			visited[((post_t *)node->data)->id] = 1;
+	while (front < rear) {
+		g_node_t *node = queue[front++];
+		visited[((post_t *)node->data)->id] = 1;
 
-			if (((post_t *)node->data)->id == repost_id_int) {
-				repost_id_node = node;
-				break;
-			}
-			for (int i = 0; i < node->n_children; i++) {
-				if (!visited[((post_t *)node->children[i]->data)->id])
-					queue[rear++] = node->children[i];
-			}
+		if (((post_t *)node->data)->id == repost_id_int) {
+			repost_id_node = node;
+			break;
 		}
-		// Add repost node to repost_id_node
-		repost_id_node->children[repost_id_node->n_children] = repost_node;
-		repost_id_node->n_children++;
-		free(queue);
-		return repost;
+		for (int i = 0; i < node->n_children; i++) {
+			if (!visited[((post_t *)node->children[i]->data)->id])
+				queue[rear++] = node->children[i];
+		}
+	}
+	// Add repost node to repost_id_node
+	repost_id_node->children[repost_id_node->n_children] = repost_node;
+	repost_id_node->n_children++;
+	free(queue);
+	return repost;
 }
 
 post_t *create_repost_of_post(post_array_t *posts, int post_id_int,
@@ -187,7 +191,6 @@ g_node_t *find_lca(g_node_t *root, int repost_id_1, int repost_id_2)
 	return lca;
 }
 
-// Implementation of common_repost function
 void common_repost(char *input, post_array_t *posts)
 {
 	strtok(input, " ");
@@ -456,7 +459,7 @@ void print_reposts(g_node_t *root, int post_id)
 	if (((post_t *)root->data)->id != post_id + 1)
 		printf("Repost #%d by %s\n",
 			   ((post_t *)root->data)->id,
-			   get_user_name(user_id)); // "Repost #%d by %s\n
+			   get_user_name(user_id));
 
 	for (int i = 0; i < root->n_children; i++)
 		if (root->children[i])
@@ -503,4 +506,48 @@ void get_reposts(char *input, post_array_t *posts)
 		}
 		free(queue);
 	}
+}
+
+void free_node(g_node_t *node)
+{
+	if (!node)
+		return;
+
+	// Free children nodes recursively
+	for (int i = 0; i < node->n_children; i++)
+		free_node(node->children[i]);
+
+	// Free the node's children array
+	free(node->children);
+
+	// Free the node
+	free(node);
+}
+
+void free_posts(post_array_t *posts)
+{
+	for (unsigned int i = 0; i < posts->size; i++) {
+		if (posts->array[i]) {
+			// Free the post's title if it exists
+			if (posts->array[i]->title)
+				free(posts->array[i]->title);
+
+			// Free the event tree if it exists
+			if (posts->array[i]->events) {
+				// Free the root node (which recursively frees the entire tree)
+				free_node(posts->array[i]->events->root);
+
+				free(posts->array[i]->events);
+			}
+
+			// Free the post
+			free(posts->array[i]);
+		}
+	}
+
+	// Free the posts array
+	free(posts->array);
+
+	// Free the posts structure
+	free(posts);
 }

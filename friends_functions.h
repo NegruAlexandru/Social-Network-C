@@ -1,7 +1,3 @@
-//
-// Created by Alex on 14/05/2024.
-//
-
 #ifndef FRIENDS_FUNCTIONS_H
 #define FRIENDS_FUNCTIONS_H
 
