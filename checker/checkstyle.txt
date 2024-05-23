@@ -1,22 +1,3 @@
-./feed_functions.h:11: WARNING:MISSING_EOF_NEWLINE: adding a line without newline at end of file
-./feed_functions.c:23: CHECK:LONG_LINE: line length of 104 exceeds 80 columns
-./feed_functions.c:28: CHECK:LONG_LINE: line length of 97 exceeds 80 columns
-./feed_functions.c:29: CHECK:LONG_LINE: line length of 108 exceeds 80 columns
-./feed_functions.c:46: WARNING:BRACES: braces {} are not necessary for any arm of this statement
-./feed_functions.c:49: CHECK:LONG_LINE: line length of 103 exceeds 80 columns
-./feed_functions.c:67: WARNING:BRACES: braces {} are not necessary for single statement blocks
-./feed_functions.c:80: WARNING:BRACES: braces {} are not necessary for single statement blocks
-./feed_functions.c:89: CHECK:LONG_LINE: line length of 151 exceeds 80 columns
-./feed_functions.c:101: CHECK:LONG_LINE: line length of 126 exceeds 80 columns
-./feed_functions.c:119: CHECK:LONG_LINE: line length of 100 exceeds 80 columns
-./feed_functions.c:132: WARNING:BRACES: braces {} are not necessary for single statement blocks
-./posts.c:29: WARNING:LEADING_SPACE: please, no spaces at the start of a line
-./posts.c:30: ERROR:CODE_INDENT: code indent should use tabs where possible
-./posts.c:30: WARNING:LEADING_SPACE: please, no spaces at the start of a line
-./posts.c:31: ERROR:CODE_INDENT: code indent should use tabs where possible
-./posts.c:33: ERROR:CODE_INDENT: code indent should use tabs where possible
-./posts.c:33: WARNING:SPACE_BEFORE_TAB: please, no space before tabs
-./posts.c:33: WARNING:LEADING_SPACE: please, no spaces at the start of a line
 ./friends_functions.c:128: ERROR:SPACING: space required before the open parenthesis '('
 ./friends_functions.c:128: CHECK:BRACES: braces {} should be used on all arms of this statement
 ./friends_functions.c:130: CHECK:BRACES: Unbalanced braces around else statement
