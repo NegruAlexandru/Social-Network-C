@@ -6,7 +6,6 @@
 #include "posts_functions.h"
 #include "users.h"
 
-// free the memory allocated for the posts and the struct used to store them
 void free_node(g_node_t *node)
 {
 	if (!node)
@@ -23,12 +22,11 @@ void free_node(g_node_t *node)
 	free(node);
 }
 
-// Function to free the entire posts array
 void free_posts(post_array_t *posts)
 {
     for (unsigned int i = 0; i < posts->size; i++) {
         if (posts->array[i]) {
-            // Free the post's title
+            // Free the post's title if it exists
 			if (posts->array[i]->title)
             	free(posts->array[i]->title);
 
@@ -37,16 +35,15 @@ void free_posts(post_array_t *posts)
 				// Free the root node (which recursively frees the entire tree)
 				free_node(posts->array[i]->events->root);
 
-				// Free the events structure
 				free(posts->array[i]->events);
 			}
 
-			// Free the post structure
+			// Free the post
 			free(posts->array[i]);
 		}
 	}
 
-	// Free the posts array itself
+	// Free the posts array
 	free(posts->array);
 
 	// Free the posts structure

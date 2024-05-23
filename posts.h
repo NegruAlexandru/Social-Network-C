@@ -37,11 +37,15 @@ struct post_array_t {
 
 /**
  * Function that handles the calling of every command from task 2
- *
- * Please add any necessary parameters to the functions
+*/
+void handle_input_posts(char *input, post_array_t *posts);
+/**
+ * Function that frees a node from the tree and its children
 */
 void free_node(g_node_t *node);
+/**
+ *  Function that frees the posts array
+*/
 void free_posts(post_array_t *posts);
-void handle_input_posts(char *input, post_array_t *posts);
 
 #endif // POSTS_H

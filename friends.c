@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -6,7 +5,7 @@
 #include "users.h"
 #include "friends_functions.h"
 
-void handle_input_friends(char *input, int **mtx, int *no_friends)
+void handle_input_friends(char *input, int **adj_mat, int *no_friends)
 {
 	char *commands = strdup(input);
 	char *cmd = strtok(commands, "\n ");
@@ -15,19 +14,19 @@ void handle_input_friends(char *input, int **mtx, int *no_friends)
 		return;
 
 	if (!strcmp(cmd, "add"))
-		add_friend(input, mtx, no_friends);
+		add_friend(input, adj_mat, no_friends);
 	else if (!strcmp(cmd, "remove"))
-		remove_friend(input, mtx, no_friends);
+		remove_friend(input, adj_mat, no_friends);
 	else if (!strcmp(cmd, "suggestions"))
-		suggestions(input, mtx);
+		suggestions(input, adj_mat);
 	else if (!strcmp(cmd, "distance"))
-		distance_between_friends(input, mtx);
+		distance_between_friends(input, adj_mat);
 	else if (!strcmp(cmd, "common"))
-		common_friends(input, mtx);
+		common_friends(input, adj_mat);
 	else if (!strcmp(cmd, "friends"))
 		number_friends(input, no_friends);
 	else if (!strcmp(cmd, "popular"))
-		popular_friends(input, mtx, no_friends);
-	// TODO: Add function
+		popular_friends(input, adj_mat, no_friends);
+
 	free(commands);
 }
