@@ -72,8 +72,7 @@ void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 					printf("%s\n", get_user_name(j));
 }
 
-// Helper function to check if a group of users are all friends with each other
-int is_clique(int *group, int group_size, int **adj_mat)
+static int is_clique(int *group, int group_size, int **adj_mat)
 {
 	for (int i = 0; i < group_size; i++)
 		for (int j = i + 1; j < group_size; j++)
@@ -82,8 +81,7 @@ int is_clique(int *group, int group_size, int **adj_mat)
 	return 1;
 }
 
-// Helper function to find cliques recursively
-void find_cliques(int *current_clique, int current_size,
+static void find_cliques(int *current_clique, int current_size,
 				  int start, int user_id, int max_users, int **adj_mat,
 				  int *best_clique, int *best_clique_size)
 {
