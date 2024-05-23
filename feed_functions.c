@@ -24,7 +24,7 @@ void feed(char *input, int **adj_mat, post_array_t *posts)
 				count++;
 			}
 		} else {
-			for (int j = 0; j < 518; j++) {
+			for (int j = 0; j < MAX_USERS; j++) {
 				if (friends[j] == 1 && posts->array[i]->user_id == j && posts->array[i]->title) {
 					printf("%s: \"%s\"\n", get_user_name(posts->array[i]->user_id), posts->array[i]->title);
 					count++;
@@ -54,76 +54,70 @@ void view_profile(char *input, post_array_t *posts)
 
 void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 {
-    strtok(input, " ");
-    char *user = strtok(NULL, " ");
-    char *post_id = strtok(NULL, "\n");
+	strtok(input, " ");
+	char *user = strtok(NULL, " ");
+	char *post_id = strtok(NULL, "\n");
 
-    int user_id = get_user_id(user);
-    int post_id_int = atoi(post_id);
+	int user_id = get_user_id(user);
+	int post_id_int = atoi(post_id);
 
-    for(unsigned int i = 0; i < posts->size; i++) {
-        if(posts->array[i]->parent_post_id == post_id_int) {
-            for(int j = 0; j < 518; j++) {
-                if(adj_mat[user_id][j] == 1 && posts->array[i]->user_id == j) {
-                    printf("%s\n", get_user_name(j));
-                }
-            }
-        }
-    }
+	for (unsigned int i = 0; i < posts->size; i++) {
+		if (posts->array[i]->parent_post_id == post_id_int) {
+			for (int j = 0; j < MAX_USERS; j++) {
+				if (adj_mat[user_id][j] == 1 && posts->array[i]->user_id == j) {
+					printf("%s\n", get_user_name(j));
+				}
+			}
+		}
+	}
 }
 
 // Helper function to check if a group of users are all friends with each other
-int is_clique(int *group, int group_size, int **adj_mat) {
-    for (int i = 0; i < group_size; i++) {
-        for (int j = i + 1; j < group_size; j++) {
-            if (adj_mat[group[i]][group[j]] == 0) {
-                return 0;
-            }
-        }
-    }
-    return 1;
+int is_clique(int *group, int group_size, int **adj_mat)
+{
+	for (int i = 0; i < group_size; i++) {
+		for (int j = i + 1; j < group_size; j++) {
+			if (adj_mat[group[i]][group[j]] == 0) {
+				return 0;
+			}
+		}
+	}
+	return 1;
 }
 
 // Helper function to find cliques recursively
-void find_cliques(int *current_clique, int current_size, int start, int user_id, int max_users, int **adj_mat, int *best_clique, int *best_clique_size) {
-    if (is_clique(current_clique, current_size, adj_mat)) {
-        if (current_size > *best_clique_size) {
-            *best_clique_size = current_size;
-            memcpy(best_clique, current_clique, current_size * sizeof(int));
-        }
-    }
+void find_cliques(int *current_clique, int current_size, int start, int user_id, int max_users, int **adj_mat, int *best_clique, int *best_clique_size)
+{
+	if (is_clique(current_clique, current_size, adj_mat)) {
+		if (current_size > *best_clique_size) {
+			*best_clique_size = current_size;
+			memcpy(best_clique, current_clique, current_size * sizeof(int));
+		}
+	}
 
-    for (int i = start; i < max_users; i++) {
-        if (adj_mat[user_id][i] == 1 || i == user_id) {
-            current_clique[current_size] = i;
-            find_cliques(current_clique, current_size + 1, i + 1, user_id, max_users, adj_mat, best_clique, best_clique_size);
-        }
-    }
+	for (int i = start; i < max_users; i++) {
+		if (adj_mat[user_id][i] == 1 || i == user_id) {
+			current_clique[current_size] = i;
+			find_cliques(current_clique, current_size + 1, i + 1, user_id, max_users, adj_mat, best_clique, best_clique_size);
+		}
+	}
 }
 
-void common_groups(char *input, int **adj_mat) {
-    // Parse the input to get the user name
-    strtok(input, " ");
-    char *user = strtok(NULL, "\n");
+void common_groups(char *input, int **adj_mat)
+{
+	strtok(input, " ");
+	char *user = strtok(NULL, "\n");
 
-    // Get the user ID from the user name
-    int user_id = get_user_id(user);
+	int user_id = get_user_id(user);
 
-    // Maximum number of users (assuming 518 as in previous functions)
-    int max_users = 518;
+	int *best_clique = malloc(MAX_USERS * sizeof(int));
+	int best_clique_size = 0;
 
-    // Array to track the largest group of friends (clique) that includes the user
-    int *best_clique = malloc(max_users * sizeof(int));
-    int best_clique_size = 0;
+	int *current_clique = malloc(MAX_USERS * sizeof(int));
 
-    // Array to store the current clique during the search
-    int *current_clique = malloc(max_users * sizeof(int));
+	current_clique[0] = user_id;
+	find_cliques(current_clique, 1, 0, user_id, MAX_USERS, adj_mat, best_clique, &best_clique_size);
 
-    // Initialize the search with the user in the clique
-    current_clique[0] = user_id;
-    find_cliques(current_clique, 1, 0, user_id, max_users, adj_mat, best_clique, &best_clique_size);
-
-	//sort by id
 	for (int i = 0; i < best_clique_size; i++) {
 		for (int j = i + 1; j < best_clique_size; j++) {
 			if (best_clique[i] > best_clique[j]) {
@@ -134,13 +128,11 @@ void common_groups(char *input, int **adj_mat) {
 		}
 	}
 
-    // Output the result
-    printf("The closest friend group of %s is:\n", user);
-    for (int i = 0; i < best_clique_size; i++) {
-        printf("%s\n", get_user_name(best_clique[i]));
-    }
+	printf("The closest friend group of %s is:\n", user);
+	for (int i = 0; i < best_clique_size; i++) {
+		printf("%s\n", get_user_name(best_clique[i]));
+	}
 
-    // Free allocated memory
-    free(current_clique);
-    free(best_clique);
+	free(current_clique);
+	free(best_clique);
 }

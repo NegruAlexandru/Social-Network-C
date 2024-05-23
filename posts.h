@@ -1,6 +1,5 @@
 #include <stdbool.h>
-#define MAX_USERS 518
-
+#include "users.h"
 #ifndef POSTS_H
 #define POSTS_H
 

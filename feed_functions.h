@@ -1,4 +1,5 @@
 #include "posts.h"
+#include "users.h"
 #ifndef FEED_FUNCTIONS_H
 #define FEED_FUNCTIONS_H
 

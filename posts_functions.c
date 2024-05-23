@@ -40,39 +40,15 @@ void create_post(char *input, post_array_t *posts)
 	post->events->root->data = post;
 	post->events->root->children = calloc(100, sizeof(g_node_t *));
 	post->events->root->n_children = 0;
-
 	posts->array[posts->size] = post;
 	posts->size++;
 
 	printf("Created \"%s\" for %s\n", title, user);
 }
 
-void create_repost(char *input, post_array_t *posts)
+post_t *create_repost_of_repost(post_array_t *posts, int post_id_int,
+								int repost_id_int, int user_id)
 {
-	strtok(input, " ");
-	char *user = strtok(NULL, " ");
-	char *post_id = strtok(NULL, " ");
-	char *repost_id = strtok(NULL, " ");
-	int user_id = get_user_id(user);
-	int post_id_int = atoi(post_id);
-	post_id_int--;
-	if (posts->size == posts->capacity) {
-		posts->capacity *= 2;
-		post_t **tmp = realloc(posts->array, posts->capacity *
-							   sizeof(post_t *));
-
-		if (!tmp) {
-			printf("Error reallocating memory");
-			return;
-		}
-
-		posts->array = tmp;
-	}
-	if (repost_id) {
-		// repost la repost
-		int repost_id_int = atoi(repost_id);
-
-		// Create repost
 		post_t *repost = calloc(1, sizeof(post_t));
 		repost->id = posts->size + 1;
 		repost->parent_post_id = post_id_int + 1;
@@ -114,12 +90,14 @@ void create_repost(char *input, post_array_t *posts)
 		// Add repost node to repost_id_node
 		repost_id_node->children[repost_id_node->n_children] = repost_node;
 		repost_id_node->n_children++;
-
-		posts->array[posts->size] = repost;
-		posts->size++;
 		free(queue);
-	} else {
-		// repost la post
+		return repost;
+}
+
+post_t *create_repost_of_post(post_array_t *posts, int post_id_int,
+							  int user_id)
+{
+		// Create repost
 		post_t *repost = calloc(1, sizeof(post_t));
 		repost->id = posts->size + 1;
 		repost->parent_post_id = post_id_int + 1;
@@ -128,16 +106,54 @@ void create_repost(char *input, post_array_t *posts)
 		repost->like_count = 0;
 		repost->events = NULL;
 
-		g_node_t *node = calloc(1, sizeof(g_node_t));
-		node->data = repost;
-		node->children = calloc(100, sizeof(g_node_t *));
-		node->n_children = 0;
+		// Create repost node
+		g_node_t *repost_node = calloc(1, sizeof(g_node_t));
+		repost_node->data = repost;
+		repost_node->children = calloc(100, sizeof(g_node_t *));
+		repost_node->n_children = 0;
 
-		int n_children = posts->array[post_id_int]->events->root->n_children;
-		posts->array[post_id_int]->events->root->children[n_children] = node;
-		posts->array[post_id_int]->events->root->n_children++;
+		// Tree root
+		g_node_t *root = posts->array[post_id_int]->events->root;
 
-		posts->array[posts->size] = repost;
+		// Add repost node to root
+		root->children[root->n_children] = repost_node;
+		root->n_children++;
+		return repost;
+}
+
+void create_repost(char *input, post_array_t *posts)
+{
+	strtok(input, " ");
+	char *user = strtok(NULL, " ");
+	char *post_id = strtok(NULL, " ");
+	char *repost_id = strtok(NULL, " ");
+	int user_id = get_user_id(user);
+	int post_id_int = atoi(post_id);
+	post_id_int--;
+	if (posts->size == posts->capacity) {
+		posts->capacity *= 2;
+		post_t **tmp = realloc(posts->array, posts->capacity *
+							   sizeof(post_t *));
+
+		if (!tmp) {
+			printf("Error reallocating memory");
+			return;
+		}
+
+		posts->array = tmp;
+	}
+	if (repost_id) {
+		// repost la repost
+		int repost_id_int = atoi(repost_id);
+		posts->array[posts->size] = create_repost_of_repost(posts, post_id_int,
+															repost_id_int,
+															user_id);
+		posts->size++;
+	} else {
+		// repost la post
+		posts->array[posts->size] = create_repost_of_post(posts,
+														  post_id_int,
+														  user_id);
 		posts->size++;
 	}
 
@@ -356,7 +372,7 @@ void delete_post(char *input, post_array_t *posts)
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
-	if(!repost_id){
+	if (!repost_id) {
 		free_post(posts, posts->array[post_id_int]);
 		posts->array[post_id_int] = NULL;
 	} else {
@@ -373,7 +389,8 @@ void delete_post(char *input, post_array_t *posts)
 			visited[((post_t *)(*node)->data)->id] = 1;
 
 			if (((post_t *)(*node)->data)->id == repost_id_int) {
-				printf("Deleted repost #%d of post \"%s\"\n", repost_id_int, posts->array[post_id_int]->title);
+				printf("Deleted repost #%d of post \"%s\"\n",
+					   repost_id_int, posts->array[post_id_int]->title);
 
 				g_node_t **tmp = node;
 				free_repost(posts, node);
@@ -383,13 +400,10 @@ void delete_post(char *input, post_array_t *posts)
 				break;
 			}
 
-			for (int i = 0; i < (*node)->n_children; i++) {
-				if (!visited[((post_t *)(*node)->children[i]->data)->id]) {
-					if ((*node)->children[i]) {
+			for (int i = 0; i < (*node)->n_children; i++)
+				if (!visited[((post_t *)(*node)->children[i]->data)->id])
+					if ((*node)->children[i])
 						queue[rear++] = &(*node)->children[i];
-					}
-				}
-			}
 		}
 		free(queue);
 	}

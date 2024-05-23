@@ -30,9 +30,9 @@ void init_tasks(void)
 
 int **init_adj_mat(void)
 {
-	int **adj_mat = calloc(518, sizeof(int *));
+	int **adj_mat = calloc(MAX_USERS, sizeof(int *));
 	for (int i = 0; i < 518; i++)
-		adj_mat[i] = calloc(518, sizeof(int));
+		adj_mat[i] = calloc(MAX_USERS, sizeof(int));
 
 	return adj_mat;
 }
@@ -53,7 +53,7 @@ int main(void)
 	// Initialize the adjacency matrix
 	#if defined(TASK_1) || defined(TASK_3)
 	int **adj_mat = init_adj_mat();
-	int *no_friends = calloc(518, sizeof(int));
+	int *no_friends = calloc(MAX_USERS, sizeof(int));
 	#endif
 
 	// Initialize the post counter and array
@@ -84,7 +84,7 @@ int main(void)
 		#endif
 	}
 	#if defined(TASK_1) || defined(TASK_3)
-	for (int i = 0; i < 518; i++)
+	for (int i = 0; i < MAX_USERS; i++)
 		free(adj_mat[i]);
 	free(adj_mat);
 	free(no_friends);
