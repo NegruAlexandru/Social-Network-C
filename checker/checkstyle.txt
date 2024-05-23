@@ -1,3 +1,0 @@
-./friends_functions.c:128: ERROR:SPACING: space required before the open parenthesis '('
-./friends_functions.c:128: CHECK:BRACES: braces {} should be used on all arms of this statement
-./friends_functions.c:130: CHECK:BRACES: Unbalanced braces around else statement

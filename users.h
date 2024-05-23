@@ -1,5 +1,6 @@
 #include <stdint.h>
 #define MAX_USERS 518
+#define INITIAL_NUM_POSTS 100
 
 /**
  * Initializes the user list

@@ -4,7 +4,7 @@
 #define POSTS_FUNCTIONS_H
 
 #define MAX_CHILDREN 100
-#define MAX_QUEUE_SIZE 100
+#define MAX_QUEUE_SIZE 200
 
 /**
  * Function that handles the creation of a post
@@ -23,7 +23,8 @@ void common_repost(char *input, post_array_t *posts);
 */
 void like_post(char *input, post_array_t *posts);
 /**
- * Function that calculates the ratio of likes between a repost and its parent post
+ * Function that calculates the ratio of likes between a repost and
+ * its parent post
 */
 void ratio_post(char *input, post_array_t *posts);
 /**
@@ -42,5 +43,9 @@ void print_reposts(g_node_t *root, int post_id);
  * Function that returns the reposts of a post
 */
 void get_reposts(char *input, post_array_t *posts);
+/**
+ *  Function that frees the posts array
+*/
+void free_posts(post_array_t *posts);
 
 #endif

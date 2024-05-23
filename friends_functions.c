@@ -70,7 +70,7 @@ static int *distance_compute(int id, int **adj_mat)
 			}
 		}
 	}
-	
+
 	free(visited);
 	free(queue);
 	return distance;
@@ -95,7 +95,7 @@ void distance_between_friends(char *input, int **adj_mat)
 	else
 		printf("The distance between %s - %s is %d\n", user1,
 			   user2, distance[id2]);
-	
+
 	free(distance);
 }
 
@@ -114,9 +114,8 @@ void suggestions(char *input, int **adj_mat)
 
 	// find the suggestions
 	for (int i = 0; i < MAX_USERS; i++) {
-		if (distance[i] == 2) {
+		if (distance[i] == 2)
 			suggestions[count++] = i;
-		}
 	}
 
 	// sort the suggestions

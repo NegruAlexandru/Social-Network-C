@@ -4,7 +4,6 @@
 #include <string.h>
 #include "users.h"
 
-
 void create_post(char *input, post_array_t *posts)
 {
 	// Parse the input
@@ -49,8 +48,8 @@ void create_post(char *input, post_array_t *posts)
 	printf("Created \"%s\" for %s\n", title, user);
 }
 
-post_t *create_repost_of_repost(post_array_t *posts, int post_id_int,
-								int repost_id_int, int user_id)
+static post_t *create_repost_of_repost(post_array_t *posts, int post_id_int,
+									   int repost_id_int, int user_id)
 {
 	// Create repost
 	post_t *repost = calloc(1, sizeof(post_t));
@@ -94,15 +93,16 @@ post_t *create_repost_of_repost(post_array_t *posts, int post_id_int,
 
 	// Add repost node to repost_parent_node
 	if (repost_parent_node) {
-		repost_parent_node->children[repost_parent_node->n_children] = repost_node;
+		int index = repost_parent_node->n_children;
+		repost_parent_node->children[index] = repost_node;
 		repost_parent_node->n_children++;
 	}
 	free(queue);
 	return repost;
 }
 
-post_t *create_repost_of_post(post_array_t *posts, int post_id_int,
-							  int user_id)
+static post_t *create_repost_of_post(post_array_t *posts, int post_id_int,
+									 int user_id)
 {
 		// Create repost
 		post_t *repost = calloc(1, sizeof(post_t));
@@ -174,7 +174,7 @@ void create_repost(char *input, post_array_t *posts)
 	printf("Created repost #%d for %s\n", posts->size, user);
 }
 
-g_node_t *find_lca(g_node_t *root, int repost_id_1, int repost_id_2)
+static g_node_t *find_lca(g_node_t *root, int repost_id_1, int repost_id_2)
 {
 	if (!root)
 		return NULL;
@@ -277,15 +277,18 @@ void like_post(char *input, post_array_t *posts)
 		int repost_id_int = atoi(repost_id);
 		repost_id_int--;
 
+		int parent_id = posts->array[repost_id_int]->parent_post_id - 1;
+
 		// Like the repost
 		if (!posts->array[repost_id_int]->likes[user_id]) {
+			printf("User %s liked repost \"%s\"\n",
+				   user, posts->array[parent_id]->title);
 			posts->array[repost_id_int]->likes[user_id] = true;
 			posts->array[repost_id_int]->like_count++;
-			printf("User %s liked repost \"%s\"\n",
-				   user, posts->array[repost_id_int]->title);
+
 		} else {
 			printf("User %s unliked repost \"%s\"\n",
-				   user, posts->array[repost_id_int]->title);
+				   user, posts->array[parent_id]->title);
 			posts->array[repost_id_int]->likes[user_id] = false;
 			posts->array[repost_id_int]->like_count--;
 		}
@@ -294,17 +297,22 @@ void like_post(char *input, post_array_t *posts)
 
 void ratio_post(char *input, post_array_t *posts)
 {
+	// Parse the input
 	strtok(input, " ");
 	char *post_id = strtok(NULL, " ");
+
+	// Get the post id
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
+	// Get the original post and its like count
 	post_t *original_post = posts->array[post_id_int];
 	int original_like_count = original_post->like_count;
 
+	// Find the repost with the highest likes
 	g_node_t *root = original_post->events->root;
-	g_node_t **queue = calloc(4000, sizeof(g_node_t *));
-	int visited[4000] = {0};
+	g_node_t **queue = calloc(MAX_QUEUE_SIZE, sizeof(g_node_t *));
+	int visited[MAX_QUEUE_SIZE] = {0};
 	int front = 0, rear = 0;
 	queue[rear++] = root;
 
@@ -367,9 +375,12 @@ void free_post(post_array_t *posts, post_t *post)
 
 void delete_post(char *input, post_array_t *posts)
 {
+	// Parse the input
 	strtok(input, " ");
 	char *post_id = strtok(NULL, " ");
 	char *repost_id = strtok(NULL, "\n ");
+
+	// Get the post id
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
@@ -380,8 +391,8 @@ void delete_post(char *input, post_array_t *posts)
 		int repost_id_int = atoi(repost_id);
 		g_node_t *root = posts->array[post_id_int]->events->root;
 
-		g_node_t ***queue = calloc(4000, sizeof(g_node_t *));
-		int visited[4000] = {0};
+		g_node_t ***queue = calloc(MAX_QUEUE_SIZE, sizeof(g_node_t *));
+		int visited[MAX_QUEUE_SIZE] = {0};
 		int front = 0, rear = 0;
 		queue[rear++] = &root;
 
@@ -412,12 +423,16 @@ void delete_post(char *input, post_array_t *posts)
 
 void get_likes(char *input, post_array_t *posts)
 {
+	// Parse the input
 	strtok(input, " ");
 	char *post_id = strtok(NULL, " ");
 	char *repost_id = strtok(NULL, " ");
 
+	// Get the post id
 	int post_id_int = atoi(post_id);
 	post_id_int--;
+
+	// If repost_id does not exist, print the likes of the post
 	if (!repost_id) {
 		printf("Post \"%s\" has %d likes\n", posts->array[post_id_int]->title,
 			   posts->array[post_id_int]->like_count);
@@ -425,8 +440,8 @@ void get_likes(char *input, post_array_t *posts)
 		int repost_id_int = atoi(repost_id);
 		g_node_t *root = posts->array[post_id_int]->events->root;
 
-		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
-		int visited[4000] = {0};
+		g_node_t **queue = calloc(MAX_QUEUE_SIZE, sizeof(g_node_t *));
+		int visited[MAX_QUEUE_SIZE] = {0};
 		int front = 0, rear = 0;
 		queue[rear++] = root;
 
@@ -453,12 +468,16 @@ void print_reposts(g_node_t *root, int post_id)
 {
 	if (!root)
 		return;
+
 	int user_id = ((post_t *)root->data)->user_id;
+
+	// Print the reposts
 	if (((post_t *)root->data)->id != post_id + 1)
 		printf("Repost #%d by %s\n",
 			   ((post_t *)root->data)->id,
 			   get_user_name(user_id));
 
+	// Recursively print the reposts
 	for (int i = 0; i < root->n_children; i++)
 		if (root->children[i])
 			print_reposts(root->children[i], post_id);
@@ -466,10 +485,12 @@ void print_reposts(g_node_t *root, int post_id)
 
 void get_reposts(char *input, post_array_t *posts)
 {
+	// Parse the input
 	strtok(input, " ");
 	char *post_id = strtok(NULL, " ");
 	char *repost_id = strtok(NULL, " ");
 
+	// Get the post id
 	int post_id_int = atoi(post_id);
 	post_id_int--;
 
@@ -483,8 +504,8 @@ void get_reposts(char *input, post_array_t *posts)
 		int repost_id_int = atoi(repost_id);
 		g_node_t *root = posts->array[post_id_int]->events->root;
 
-		g_node_t **queue = calloc(4000, sizeof(g_node_t *));
-		int visited[4000] = {0};
+		g_node_t **queue = calloc(MAX_QUEUE_SIZE, sizeof(g_node_t *));
+		int visited[MAX_QUEUE_SIZE] = {0};
 		int front = 0, rear = 0;
 		queue[rear++] = root;
 
@@ -506,7 +527,7 @@ void get_reposts(char *input, post_array_t *posts)
 	}
 }
 
-void free_node(g_node_t *node)
+static void free_node(g_node_t *node)
 {
 	if (!node)
 		return;

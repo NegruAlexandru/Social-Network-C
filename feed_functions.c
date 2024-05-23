@@ -8,15 +8,19 @@
 
 void feed(char *input, int **adj_mat, post_array_t *posts)
 {
+    // Parse the input
 	strtok(input, " ");
 	char *user = strtok(NULL, " ");
 	char *feed_size = strtok(NULL, "\n");
 
+    // Get the user id and feed size
 	int feed_size_int = atoi(feed_size);
 	int user_id = get_user_id(user);
 	int count = 0;
 	int *friends = adj_mat[user_id];
 
+    // Go through the posts in reverse order to print the most recent ones
+    // first, and print the posts of the user and his friends
 	for (int i = posts->size - 1; i >= 0 && count < feed_size_int; i--) {
 		if (posts->array[i]->user_id == user_id) {
 			if (posts->array[i]->title) {
@@ -41,10 +45,14 @@ void feed(char *input, int **adj_mat, post_array_t *posts)
 
 void view_profile(char *input, post_array_t *posts)
 {
+    // Parse the input
 	strtok(input, " ");
 	char *user = strtok(NULL, "\n");
 
+    // Get the user id
 	int user_id = get_user_id(user);
+
+    // Print the posts of the user
 	for (unsigned int i = 0; i < posts->size; i++) {
 		if (posts->array[i]->user_id == user_id) {
 			int parent_id = posts->array[i]->parent_post_id - 1;
@@ -58,13 +66,16 @@ void view_profile(char *input, post_array_t *posts)
 
 void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 {
+    // Parse the input
 	strtok(input, " ");
 	char *user = strtok(NULL, " ");
 	char *post_id = strtok(NULL, "\n");
 
+    // Get the user id and the post id
 	int user_id = get_user_id(user);
 	int post_id_int = atoi(post_id);
 
+    // Print the posts of the friends that reposted the post
 	for (unsigned int i = 0; i < posts->size; i++)
 		if (posts->array[i]->parent_post_id == post_id_int)
 			for (int j = 0; j < MAX_USERS; j++)
@@ -74,6 +85,7 @@ void friends_repost(char *input, int **adj_mat, post_array_t *posts)
 
 static int is_clique(int *group, int group_size, int **adj_mat)
 {
+    // Check if the group is a clique
 	for (int i = 0; i < group_size; i++)
 		for (int j = i + 1; j < group_size; j++)
 			if (adj_mat[group[i]][group[j]] == 0)
@@ -85,6 +97,7 @@ static void find_cliques(int *current_clique, int current_size,
 						 int start, int user_id, int max_users, int **adj_mat,
 						 int *best_clique, int *best_clique_size)
 {
+    // Check if the current group is a clique and update the best clique
 	if (is_clique(current_clique, current_size, adj_mat)) {
 		if (current_size > *best_clique_size) {
 			*best_clique_size = current_size;
@@ -92,6 +105,7 @@ static void find_cliques(int *current_clique, int current_size,
 		}
 	}
 
+    // Recursively find cliques
 	for (int i = start; i < max_users; i++) {
 		if (adj_mat[user_id][i] == 1 || i == user_id) {
 			current_clique[current_size] = i;
@@ -104,11 +118,14 @@ static void find_cliques(int *current_clique, int current_size,
 
 void common_groups(char *input, int **adj_mat)
 {
+    // Parse the input
 	strtok(input, " ");
 	char *user = strtok(NULL, "\n");
 
+    // Get the user id
 	int user_id = get_user_id(user);
 
+    // Find the closest friend group of the user
 	int *best_clique = malloc(MAX_USERS * sizeof(int));
 	int best_clique_size = 0;
 
@@ -118,6 +135,7 @@ void common_groups(char *input, int **adj_mat)
 	find_cliques(current_clique, 1, 0, user_id, MAX_USERS, adj_mat,
 				 best_clique, &best_clique_size);
 
+    // Sort the names of the users in the group
 	for (int i = 0; i < best_clique_size; i++) {
 		for (int j = i + 1; j < best_clique_size; j++) {
 			if (best_clique[i] > best_clique[j]) {

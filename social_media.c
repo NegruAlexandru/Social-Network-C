@@ -9,6 +9,7 @@
 #include "friends.h"
 #include "posts.h"
 #include "users.h"
+#include "posts_functions.h"
 
 /**
  * Initializez every task based on which task we are running
@@ -59,9 +60,9 @@ int main(void)
 	// Initialize the post counter and array
 	#if defined(TASK_2) || defined(TASK_3)
 	post_array_t *posts = calloc(1, sizeof(post_array_t));
-	posts->array = calloc(200, sizeof(post_t *));
+	posts->array = calloc(INITIAL_NUM_POSTS, sizeof(post_t *));
 	posts->size = 0;
-	posts->capacity = 100;
+	posts->capacity = INITIAL_NUM_POSTS;
 	#endif
 
 	while (1) {
