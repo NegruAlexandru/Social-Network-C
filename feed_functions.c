@@ -82,8 +82,8 @@ static int is_clique(int *group, int group_size, int **adj_mat)
 }
 
 static void find_cliques(int *current_clique, int current_size,
-				  int start, int user_id, int max_users, int **adj_mat,
-				  int *best_clique, int *best_clique_size)
+						 int start, int user_id, int max_users, int **adj_mat,
+						 int *best_clique, int *best_clique_size)
 {
 	if (is_clique(current_clique, current_size, adj_mat)) {
 		if (current_size > *best_clique_size) {
