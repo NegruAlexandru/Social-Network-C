@@ -6,6 +6,7 @@
 #include "posts_functions.h"
 #include "users.h"
 
+// free the memory allocated for the posts and the struct used to store them
 void free_node(g_node_t *node)
 {
 	if (!node)
@@ -22,6 +23,7 @@ void free_node(g_node_t *node)
 	free(node);
 }
 
+// Function to free the entire posts array
 void free_posts(post_array_t *posts)
 {
     for (unsigned int i = 0; i < posts->size; i++) {
